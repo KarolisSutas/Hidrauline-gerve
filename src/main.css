@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: oklch(0.27 0 0);
+  min-height: 100vh;
+  color: azure;
+}
