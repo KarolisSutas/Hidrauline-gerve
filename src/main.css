@@ -7,9 +7,12 @@
   --font-body: "Inter", system-ui, sans-serif;
 }
 
+
+nav a { padding-inline: 5px; }
+h1,h2,h3,.btn-order{ padding-inline: 5px; }
+  
 h1, h2, h3, nav, a, .btn-order{
   font-family: var(--font-heading);
-  padding-inline: 5px;
 }
 
 p, li{
@@ -19,19 +22,25 @@ p, li{
 
 body{
   background: rgb(233, 233, 233);
-  min-height: 100vh;
   color: rgb(233, 233, 233);
 }
 
 nav{
   font-optical-sizing: auto;
   font-weight: 800;
-  background: linear-gradient(to bottom, #747474 0%, #6b6b6b 100%);
+  background: linear-gradient(
+    to bottom,
+    #0e0e0e 0,
+    #0e0e0e env(safe-area-inset-top),
+    #242424 env(safe-area-inset-top),
+    #5a5a5a 100%
+  );
   z-index: 1000;
+  box-shadow: 0 1px 0 rgba(255,255,255,.06);
 }
 
 /* ===== HERO kortelė ===== */
-.bg-container{
+.hero-container{
   position: relative;
   box-shadow: #6b6b6b 0px 4px 20px;
   display: grid;
@@ -43,7 +52,9 @@ nav{
   overflow: hidden;
 
   --overlay-overlap: 40px; 
-  --overlay-gap: 16px;     
+  --overlay-gap: 16px;   
+  --overlay-inset: 16px;
+  --overlay-lift: 24px;  
 }
 
 .dark-gray{
@@ -80,9 +91,7 @@ nav{
 .light-gray-bottom{
   grid-column: 1;
   grid-row: 2;
-  min-height: 20svh;
   background: linear-gradient(40deg, #9e9a95 0%, #cfcac4 55%, #f3f2f0 85%);
-
   padding-right: calc(var(--overlay-overlap) + var(--overlay-gap));
 }
 
@@ -96,7 +105,6 @@ nav{
 .white{
   grid-column: 2;
   grid-row: 2;
-  min-height: 20svh;
   background-image: linear-gradient(
     to top,
     #d5d4d0 0%,
@@ -105,6 +113,13 @@ nav{
     #efeeec 75%,
     #e9e9e7 100%
   );
+}
+
+.light-gray-bottom,
+.white{
+  min-height: clamp(100px, 18svh, 180px);
+  max-height: 215px;
+  overflow: hidden;
 }
 
 .transparent{
@@ -117,66 +132,85 @@ nav{
   z-index: 20;
 
   width: min(520px, calc(40% + var(--overlay-overlap)));
-  min-height: 23svh;
+  height: clamp(140px, 22svh, 215px);
 }
 
 /* ===== BREAKPOINTS ===== */
 
 @media (min-width: 1200px){
-  .bg-container{
+  .hero-container{
     --overlay-overlap: 110px;
     --overlay-gap: 24px;
   }
   .transparent{
-    width: min(500px, calc(40% + var(--overlay-overlap)));
-    min-height: 215px;
+    width: min(525px, calc(40% + var(--overlay-overlap)));
+    height: clamp(120px, 24svh, 215px);
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px){
-  .bg-container{
+  .hero-container{
     --overlay-overlap: clamp(40px, 6vw, 110px);
     --overlay-gap: 24px;
   }
   .transparent{
-    width: min(480px, calc(40% + var(--overlay-overlap)));
-    min-height: 215px;
+    width: min(480px, calc(38% + var(--overlay-overlap)));
+    height: clamp(120px, 24svh, 215px);
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px){
-  .bg-container{
+  .hero-container{
     --overlay-overlap: clamp(24px, 5vw, 70px);
     --overlay-gap: 20px;
   }
   .transparent{
     width: min(400px, calc(40% + var(--overlay-overlap)));
-    min-height: 210px;
+    height: clamp(120px, 24svh, 215px);
   }
 }
 
 @media (max-width: 575.98px){
-  .bg-container{
+  .hero-container{
     --overlay-overlap: 18px;
     --overlay-gap: 16px;
   }
   .transparent{
-    width: min(240px, calc(40% + var(--overlay-overlap)));
+    width: min(240px, calc(45% + var(--overlay-overlap)));
+  }
+}
+
+@media (min-height: 740px) and (max-height: 1000px){
+  .transparent{
+    height: clamp(140px, 21svh, 210px);
+  }
+}
+
+@media (max-height: 570px){
+  .transparent{
+    height: clamp(140px, 23svh, 210px);
+  }
+}
+
+@media (min-width: 1200px) and (min-height: 740px) and (max-height: 1000px){
+  .transparent{
+    width: min(525px, calc(34% + var(--overlay-overlap)));
+    height: clamp(140px, 22svh, 210px);
   }
 }
 
 /* ===== Order btn ===== */
 .btn-order{
-  padding: 1em 2em;
+  padding: clamp(8px, 1.5vw, 15px) clamp(10px, 2.5vw, 32px);
   border: none;
   border-radius: 5px;
   font-weight: 300;
-  letter-spacing: 5px;
+  letter-spacing: clamp(1px, 0.3vw, 3px);
   text-transform: uppercase;
   cursor: pointer;
   color: #989898;
   transition: all 1000ms;
-  font-size: 15px;
+  font-size: clamp(11px, 1.2vw, 15px);
   position: relative;
   overflow: hidden;
   outline: 2px solid #989898;
