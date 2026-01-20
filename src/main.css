@@ -49,7 +49,6 @@ nav{
   grid-template-rows: auto auto;
   width: min(1200px, 100%);
   border-radius: 5px;
-  overflow: hidden;
 
   --overlay-overlap: 40px; 
   --overlay-gap: 16px;   
@@ -133,6 +132,14 @@ nav{
 
   width: min(520px, calc(40% + var(--overlay-overlap)));
   height: clamp(140px, 22svh, 215px);
+}
+
+/* ===== Hero animacija ====== */
+
+.gerve-anim{
+  position: relative;
+  z-index: 1500;
+  will-change: transform;
 }
 
 /* ===== BREAKPOINTS ===== */
