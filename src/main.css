@@ -40,6 +40,7 @@ nav{
 }
 
 /* ===== HERO kortelė ===== */
+
 .hero-container{
   position: relative;
   box-shadow: #6b6b6b 0px 4px 20px;
@@ -57,6 +58,7 @@ nav{
 }
 
 .dark-gray{
+  border-radius: 5px 0 0 0;
   grid-column: 1;
   grid-row: 1;
   display: flex;
@@ -81,6 +83,7 @@ nav{
 }
 
 .light-gray-top{
+  border-radius: 0 5px 0 0;
   grid-column: 2;
   grid-row: 1;
   min-height: 20svh;
@@ -88,6 +91,7 @@ nav{
 }
 
 .light-gray-bottom{
+  border-radius: 0 0 0 5px;
   grid-column: 1;
   grid-row: 2;
   background: linear-gradient(40deg, #9e9a95 0%, #cfcac4 55%, #f3f2f0 85%);
@@ -102,6 +106,7 @@ nav{
 }
 
 .white{
+  border-radius: 0 0 5px 0;
   grid-column: 2;
   grid-row: 2;
   background-image: linear-gradient(
@@ -133,16 +138,6 @@ nav{
   width: min(520px, calc(40% + var(--overlay-overlap)));
   height: clamp(140px, 22svh, 215px);
 }
-
-/* ===== Hero animacija ====== */
-
-.gerve-anim{
-  position: relative;
-  z-index: 1500;
-  will-change: transform;
-}
-
-/* ===== BREAKPOINTS ===== */
 
 @media (min-width: 1200px){
   .hero-container{
@@ -245,4 +240,394 @@ nav{
 
 .btn-order:hover::before{
   width: 250%;
+}
+
+/* ===== Skirtukas ===== */
+
+.section-divider{
+  width: min(1200px, 92%);
+  margin: 32px auto 32px;
+  padding: 8px 0;
+}
+
+.divider-svg{
+  width: 100%;
+  height: 46px;
+  display: block;
+}
+
+.divider-svg line{
+  stroke: #444;
+  stroke-width: 3;
+  stroke-linecap: square;
+  opacity: 0;
+  animation: lineGrow 1.2s ease-out forwards;
+}
+
+.divider-svg line:first-of-type {
+  animation-delay: 0.2s;
+}
+
+.divider-svg line:last-of-type {
+  animation-delay: 0.4s;
+}
+
+.divider-svg .diamond{
+  fill: none;
+  stroke: #444;
+  stroke-width: 3;
+  opacity: 0;
+  animation: diamondAppear 0.8s ease-out 0.6s forwards;
+  transform-origin: 600px 35px;
+}
+
+.divider-svg .diamond-fill{
+  fill: #333;
+  opacity: 0;
+  animation: diamondFill 0.6s ease-out 1s forwards;
+  transform-origin: 600px 35px;
+}
+
+/* Animacijos */
+@keyframes lineGrow {
+  from {
+    opacity: 0;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+  }
+  to {
+    opacity: 1;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes diamondAppear {
+  from {
+    opacity: 0;
+    transform: scale(0) rotate(-45deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes diamondFill {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 640px){
+  .section-divider{
+    margin: 12px auto 6px;
+  }
+  .lengvoji-serija-section{
+    padding-bottom: 12px;
+  }
+  
+  .divider-svg line {
+    stroke-width: 2;
+  }
+  
+  .divider-svg .diamond {
+    stroke-width: 2;
+  }
+}
+
+/* ===== Serijos aprašymas ===== */
+
+.series-description {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.series-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1c1917;
+  margin-bottom: 16px;
+}
+
+.series-intro {
+  font-size: 1.1rem;
+  color: #2f2d2b;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.series-features {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #44403c;
+}
+
+.feature-icon {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 640px) {
+  .series-features {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* ===== SPEC kortelės ===== */
+.gerve-container {
+  width: min(1200px, 95%);
+  margin: 0 auto;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  padding: 20px 0;
+}
+
+.spec-card {
+  background: linear-gradient(135deg, #f5f5f4 0%, #e7e5e4 100%);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #d6d3d1;
+  position: relative;
+  overflow: hidden;
+}
+
+.spec-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #dc2626, transparent);
+  transition: left 0.6s ease;
+}
+
+.spec-icon {
+  display: inline-flex;
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.spec-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1c1917;
+  line-height: 1;
+  margin-bottom: 8px;
+  font-family: 'Arial', sans-serif;
+}
+
+.spec-unit {
+  font-size: 1rem;
+  color: #78716c;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.spec-label {
+  font-size: 0.95rem;
+  color: #57534e;
+  font-weight: 500;
+  border-top: 1px solid #d6d3d1;
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+/* Desktop - hover efektai (tik įrenginiams su pelyte) */
+@media (hover: hover) and (pointer: fine) {
+  .spec-icon {
+    filter: grayscale(100%);
+  }
+  
+  .spec-card:hover::before {
+    left: 100%;
+  }
+
+  .spec-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: #dc2626;
+  }
+
+  .spec-card:hover .spec-icon {
+    filter: grayscale(0%);
+    transform: scale(1.2) rotate(5deg);
+  }
+}
+
+/* Mobile/Tablet - spalvotos ikonos pagal nutylėjimą */
+@media (hover: none) or (pointer: coarse) {
+  .spec-icon {
+    filter: grayscale(0%);
+  }
+  
+  /* Touch feedback (kai paliečiama kortelė) */
+  .spec-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .spec-card:active .spec-icon {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive - OPTIMIZUOTA MOBILIESIEMS */
+
+@media (min-width: 968px) {
+  .specs-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 968px) {
+  .specs-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  .spec-card {
+    padding: 24px 16px;
+  }
+  
+  .spec-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  
+  .spec-value {
+    font-size: 2.5rem;
+  }
+  
+  .spec-unit {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+  
+  .spec-label {
+    font-size: 0.85rem;
+    padding-top: 10px;
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gerve-table {
+    padding: 16px 12px;
+  }
+  
+  .specs-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  
+  .spec-card {
+    padding: 20px 12px;
+    border-radius: 12px;
+  }
+  
+  .spec-icon {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  
+  .spec-value {
+    font-size: 2rem;
+    margin-bottom: 4px;
+  }
+  
+  .spec-unit {
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+  }
+  
+  .spec-label {
+    font-size: 0.8rem;
+    padding-top: 8px;
+    margin-top: 4px;
+  }
+}
+
+/* EXTRA MAŽIEMS EKRANAMS (<400px) */
+@media (max-width: 400px) {
+  .specs-grid {
+    gap: 10px;
+  }
+  
+  .spec-card {
+    padding: 16px 10px;
+  }
+  
+  .spec-icon {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+  }
+
+  .spec-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .spec-value {
+    font-size: 1.8rem;
+  }
+  
+  .spec-unit {
+    font-size: 0.7rem;
+    margin-bottom: 6px;
+  }
+  
+  .spec-label {
+    font-size: 0.75rem;
+    padding-top: 6px;
+    margin-top: 3px;
+  }
+
+  .series-title {
+    font-size: 1.5rem;
+  }
+
+  .series-intro {
+    font-size: 1.05rem;
+    color: rgb(200, 174, 24);
+  }
 }
