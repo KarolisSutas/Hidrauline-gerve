@@ -309,10 +309,68 @@
             </div>
         </section>
 
-        <section class="gallery-section flex justify-center items-center py-30 px-10 text-4xl font-bold text-slate-950">
-            <h1>Galerija</h1>
+        <section class="gallery-section py-20 px-6 text-slate-950">
+            <div class="max-w-2xl mx-auto">
+        
+                <div class="flex items-end justify-center mb-6">
+                    <h2 class="text-3xl font-extrabold tracking-tight">Galerija</h2>
+                </div>
+        
+                <!-- Didelė nuotrauka -->
+                <button type="button"
+                    class="gallery-main group relative mx-auto block w-full max-w-4xl rounded-2xl overflow-hidden"
+                    aria-label="Atidaryti galeriją">
+                    <img class="gallery-main-img w-full h-[260px] sm:h-[360px] md:h-[440px] object-cover"
+                        src="/img/lengvoji-gerve-2.jpg" alt="Gervė - nuotrauka 1" loading="lazy" />
+        
+                    <div class="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div
+                            class="absolute inset-x-0 bottom-0 p-4 bg-linear-to-t from-black/45 to-transparent text-white text-sm">
+                            Paspausk, kad atidarytum peržiūrą
+                        </div>
+                    </div>
+                </button>
+        
+                <!-- Thumbnail'ai -->
+                <div class="mt-6 relative">
+                    <button type="button" class="gallery-nav gallery-prev" aria-label="Slinkti kairėn">‹</button>
+        
+                    <div class="gallery-strip" aria-label="Galerijos miniatiūros">
+                        <img class="gallery-thumb is-active" src="/img/lengvoji-gerve-2.jpg"
+                            data-full="/img/lengvoji-gerve-2.jpg" alt="Nuotrauka 1" loading="lazy" />
+        
+                        <img class="gallery-thumb" src="/img/lengvoji-gerve-1.jpeg" data-full="/img/lengvoji-gerve-1.jpeg"
+                            alt="Nuotrauka 2" loading="lazy" />
+        
+                        <img class="gallery-thumb" src="/img/lengvoji-black-1.jpg" data-full="/img/lengvoji-black-1.jpg"
+                            alt="Nuotrauka 3" loading="lazy" />
+        
+                        <img class="gallery-thumb" src="/img/lengvoji-black-3.jpg" data-full="/img/lengvoji-black-3.jpg"
+                            alt="Nuotrauka 4" loading="lazy" />
+        
+                        <img class="gallery-thumb" src="/img/lengvoji-black-4.jpg" data-full="/img/lengvoji-black-4.jpg"
+                            alt="Nuotrauka 5" loading="lazy" />
+        
+                        <img class="gallery-thumb" src="/img/lengvoji-black-5.png" data-full="/img/lengvoji-black-5.png"
+                            alt="Nuotrauka 6" loading="lazy" />
+                    </div>
+        
+                    <button type="button" class="gallery-nav gallery-next" aria-label="Slinkti dešinėn">›</button>
+                </div>
+                <div class="gallery-modal" aria-hidden="true">
+                    <div class="gallery-modal-backdrop" data-close="true"></div>
+                
+                    <div class="gallery-modal-panel" role="dialog" aria-modal="true" aria-label="Galerijos peržiūra">
+                        <button type="button" class="gallery-modal-close" aria-label="Uždaryti" data-close="true">✕</button>
+                
+                        <button type="button" class="gallery-modal-arrow left" aria-label="Ankstesnė">‹</button>
+                        <img class="gallery-modal-img" src="" alt="Galerijos nuotrauka" />
+                        <button type="button" class="gallery-modal-arrow right" aria-label="Kita">›</button>
+                
+                        <div class="gallery-modal-caption"></div>
+                    </div>
+                </div>
         </section>
-
     </main>
 
 </body>
