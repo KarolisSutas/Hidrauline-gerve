@@ -244,68 +244,76 @@ nav{
 
 /* ===== Skirtukas ===== */
 
-.section-divider{
+.section-divider {
   width: min(1200px, 92%);
   margin: 32px auto 32px;
   padding: 8px 0;
 }
 
-.divider-svg{
+.divider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 50px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 3px;
+  background-color: #444;
+  position: relative;
+  overflow: hidden;
+}
+
+.divider-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
-  height: 46px;
-  display: block;
+  height: 100%;
+  background-color: #444;
+  animation: lineSlide 1.2s ease-out forwards;
 }
 
-.divider-svg line{
-  stroke: #444;
-  stroke-width: 3;
-  stroke-linecap: square;
-  opacity: 0;
-  animation: lineGrow 1.2s ease-out forwards;
-}
-
-.divider-svg line:first-of-type {
+.left-line::before {
   animation-delay: 0.2s;
 }
 
-.divider-svg line:last-of-type {
+.right-line::before {
   animation-delay: 0.4s;
 }
 
-.divider-svg .diamond{
-  fill: none;
-  stroke: #444;
-  stroke-width: 3;
+.divider-icon {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
   opacity: 0;
-  animation: diamondAppear 0.8s ease-out 0.6s forwards;
-  transform-origin: 600px 35px;
+  transform: scale(0) rotate(-15deg);
+  animation: iconAppear 0.8s ease-out 0.6s forwards;
 }
 
-.divider-svg .diamond-fill{
-  fill: #333;
-  opacity: 0;
-  animation: diamondFill 0.6s ease-out 1s forwards;
-  transform-origin: 600px 35px;
+.divider-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: #444;
 }
 
 /* Animacijos */
-@keyframes lineGrow {
+@keyframes lineSlide {
   from {
-    opacity: 0;
-    stroke-dasharray: 500;
-    stroke-dashoffset: 500;
+    left: -100%;
   }
   to {
-    opacity: 1;
-    stroke-dasharray: 500;
-    stroke-dashoffset: 0;
+    left: 100%;
   }
 }
 
-@keyframes diamondAppear {
+@keyframes iconAppear {
   from {
     opacity: 0;
-    transform: scale(0) rotate(-45deg);
+    transform: scale(0) rotate(-15deg);
   }
   to {
     opacity: 1;
@@ -313,42 +321,23 @@ nav{
   }
 }
 
-@keyframes diamondFill {
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% { 
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% { 
-    transform: scale(1.15);
-    opacity: 0.8;
-  }
-}
-
-@media (max-width: 640px){
-  .section-divider{
+@media (max-width: 640px) {
+  .section-divider {
     margin: 12px auto 6px;
   }
-  .lengvoji-serija-section{
-    padding-bottom: 12px;
+  
+  .divider-container {
+    gap: 12px;
+    height: 40px;
   }
   
-  .divider-svg line {
-    stroke-width: 2;
+  .divider-line {
+    height: 2px;
   }
   
-  .divider-svg .diamond {
-    stroke-width: 2;
+  .divider-icon {
+    width: 35px;
+    height: 35px;
   }
 }
 
@@ -434,8 +423,8 @@ nav{
   left: -100%;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #dc2626, transparent);
-  transition: left 0.6s ease;
+  background: linear-gradient(90deg, transparent, #242424, transparent);
+  transition: left 1s ease;
 }
 
 .spec-icon {
@@ -464,7 +453,7 @@ nav{
 }
 
 .spec-label {
-  font-size: 0.95rem;
+  font-size: 1.3rem;
   color: #57534e;
   font-weight: 500;
   border-top: 1px solid #d6d3d1;
@@ -485,7 +474,7 @@ nav{
   .spec-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    border-color: #dc2626;
+    border-color: #464646;
   }
 
   .spec-card:hover .spec-icon {
@@ -533,6 +522,11 @@ nav{
     font-size: 2rem;
     margin-bottom: 12px;
   }
+
+  .spec-icon svg {
+    width: 45px;
+    height: 45px;
+  }
   
   .spec-value {
     font-size: 2.5rem;
@@ -544,7 +538,7 @@ nav{
   }
   
   .spec-label {
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     padding-top: 10px;
     margin-top: 6px;
   }
@@ -569,6 +563,11 @@ nav{
     font-size: 1.5rem;
     margin-bottom: 8px;
   }
+
+  .spec-icon svg {
+    width: 40px;
+    height: 40px;
+  }
   
   .spec-value {
     font-size: 2rem;
@@ -581,7 +580,7 @@ nav{
   }
   
   .spec-label {
-    font-size: 0.8rem;
+    font-size: 1rem;
     padding-top: 8px;
     margin-top: 4px;
   }
@@ -617,7 +616,7 @@ nav{
   }
   
   .spec-label {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     padding-top: 6px;
     margin-top: 3px;
   }

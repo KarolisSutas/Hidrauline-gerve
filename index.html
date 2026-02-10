@@ -82,17 +82,28 @@
         </section>
 
         <div class="section-divider" aria-hidden="true">
-            <svg class="divider-svg" viewBox="0 0 1200 70" preserveAspectRatio="none" role="presentation">
-                <!-- linijos -->
-                <line x1="40" y1="35" x2="540" y2="35" />
-                <line x1="660" y1="35" x2="1160" y2="35" />
-
-                <!-- rombas centre -->
-                <polygon points="600,18 635,35 600,52 565,35" class="diamond" />
-                <polygon points="600,24 627,35 600,46 573,35" class="diamond-fill" />
-            </svg>
+            <div class="divider-container">
+                <!-- Kairė linija -->
+                <div class="divider-line left-line"></div>
+                
+                <!-- Gervės ikona -->
+                <div class="divider-icon">
+                    <svg id="fi_2260219" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m304 255.998c8.836 0 16-7.163 16-16v-96c0-8.837-7.164-16-16-16s-16 7.163-16 16v96c0 8.837 7.164 16 16 16z"></path>
+                        <path d="m352 255.998c8.836 0 16-7.163 16-16v-96c0-8.837-7.164-16-16-16s-16 7.163-16 16v96c0 8.837 7.164 16 16 16z"></path>
+                        <path d="m160 255.998c8.836 0 16-7.163 16-16v-96c0-8.837-7.164-16-16-16s-16 7.163-16 16v96c0 8.837 7.164 16 16 16z"></path>
+                        <path d="m208 255.998c8.836 0 16-7.163 16-16v-96c0-8.837-7.164-16-16-16s-16 7.163-16 16v96c0 8.837 7.164 16 16 16z"></path>
+                        <path d="m464 255.998c26.47 0 48-21.53 48-48v-32c0-23.75-17.33-43.52-40-47.33v-42.043l27.313-27.313c6.249-6.248 6.249-16.379 0-22.627-6.248-6.248-16.379-6.248-22.627 0l-32 32c-3.001 3-4.687 7.07-4.687 11.313v48h-24v-24c0-8.84-7.16-16-16-16s-16 7.16-16 16v184h-72c-8.84 0-16 7.16-16 16v56c0 8.84 7.16 16 16 16h184c8.84 0 16-7.16 16-16v-56c0-8.84-7.16-16-16-16h-80v-32z"></path>
+                        <path d="m285.946 376.672c-7.127-4.517-11.906-11.438-13.425-19.148 10.211-6.448 9.889-21.337-.522-27.367v-186.159c0-8.837-7.164-16-16-16s-16 7.163-16 16v186.158c-10.796 6.254-10.61 21.842.281 27.854 1.801 18.545 12.182 35.327 28.537 45.69 19.575 12.407 11.857 42.656-11.081 44.237-14.247.986-25.736-10.28-25.736-23.939 0-8.837-7.164-16-16-16s-16 7.163-16 16c0 30.466 24.651 56.003 55.931 56.003 30.044 0 53.962-23.489 55.933-52.065 1.42-20.589-8.511-40.233-25.918-51.264z"></path>
+                        <path d="m216 359.998v-56c0-8.84-7.16-16-16-16h-72c0-17.44 0-161.332 0-184 0-8.84-7.16-16-16-16s-16 7.16-16 16v24h-48c-26.47 0-48 21.53-48 48v32c0 26.47 21.53 48 48 48h48v32h-80c-8.84 0-16 7.16-16 16v56c0 8.84 7.16 16 16 16h184c8.84 0 16-7.16 16-16z"></path>
+                    </svg>
+                </div>
+                
+                <!-- Dešinė linija -->
+                <div class="divider-line right-line"></div>
+            </div>
         </div>
-
+        
         <section class="about-series-section flex flex-col justify-center items-center px-10 text-slate-950">
             <div class="series-description">
                 <h2 class="series-title">Specifikacijos</h2>
@@ -129,7 +140,7 @@
                 <div class="specs-grid">
                     <div class="spec-card" data-aos="fade-up" data-aos-delay="0">
                         <div class="spec-icon">
-                            <svg id="fi_2941993" enable-background="new 0 0 64 64" height="60" viewBox="0 0 64 64" width="60" xmlns="http://www.w3.org/2000/svg">
+                            <svg id="fi_2941993" enable-background="new 0 0 64 64"  viewBox="0 0 64 64" height="55" width="55" xmlns="http://www.w3.org/2000/svg">
                                 <g>
                                     <g>
                                         <g>
@@ -183,36 +194,23 @@
 
                     <div class="spec-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="spec-icon">
-                            <svg id="fi_13805455" enable-background="new 0 0 64 64" width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                            width="55" height="55" x="0" y="0" viewBox="0 0 128 128" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
                                 <g>
-                                    <g><path d="m18.59 0h11.11l13.1 5.22 4.41 4.32h-15.21v1.94h-13.41z" 
-                                        fill="#415c6b"></path>
-                                        <path d="m28.34 64h-6.14c-.95 0-1.72-.77-1.72-1.72v-50.8h9.59v50.8c-.01.95-.78 1.72-1.73 1.72z" 
-                                        fill="#cfd5df"></path>
-                                    </g>
-                                    <g fill="#415c6b">
-                                        <g>
-                                            <path d="m28.22 15.48h18.99l-3.8 3.8-11.41 1.87v9.54h-3.78z"></path>
-                                            <path d="m22.46 15.48h-3.87v3.78h-1.8v5.85h1.8v3.74c0 1.02.83 1.85 1.85 1.85h2.03v-15.22z"></path>
-                                        </g>
-                                        <g>
-                                            <path d="m28.51 37.06h-4.19c-.28 0-.52-.23-.52-.52v-.32c0-.28.23-.52.52-.52h4.19c.28 0 .52.23.52.52v.32c0 .29-.23.52-.52.52z"></path><path d="m28.51 39.94h-2.75c-.28 0-.52-.23-.52-.52v-.32c0-.28.23-.52.52-.52h2.75c.28 0 .52.23.52.52v.32c0 .29-.23.52-.52.52z"></path>
-                                        </g>
-                                        <g>
-                                            <path d="m28.51 43.39h-4.19c-.28 0-.52-.23-.52-.52v-.32c0-.28.23-.52.52-.52h4.19c.28 0 .52.23.52.52v.32c0 .29-.23.52-.52.52z"></path>
-                                            <path d="m28.51 46.27h-2.75c-.28 0-.52-.23-.52-.52v-.32c0-.28.23-.52.52-.52h2.75c.28 0 .52.23.52.52v.32c0 .29-.23.52-.52.52z"></path>
-                                        </g>
-                                        <g>
-                                            <path d="m28.51 49.72h-4.19c-.28 0-.52-.23-.52-.52v-.32c0-.28.23-.52.52-.52h4.19c.28 0 .52.23.52.52v.32c0 .28-.23.52-.52.52z"></path>
-                                            <path d="m28.51 52.6h-2.75c-.28 0-.52-.23-.52-.52v-.32c0-.28.23-.52.52-.52h2.75c.28 0 .52.23.52.52v.32c0 .28-.23.52-.52.52z"></path>
-                                        </g>
-                                        <g>
-                                            <path d="m28.51 56.04h-4.19c-.28 0-.52-.23-.52-.52v-.32c0-.28.23-.52.52-.52h4.19c.28 0 .52.23.52.52v.32c0 .29-.23.52-.52.52z"></path>
-                                            <path d="m28.51 58.92h-2.75c-.28 0-.52-.23-.52-.52v-.32c0-.28.23-.52.52-.52h2.75c.28 0 .52.23.52.52v.32c0 .29-.23.52-.52.52z"></path>
-                                        </g>
+                                    <path fill="#eaed55" d="M14 60v8h18.775v6.155l13.31-10.901-12.55-9.508v6.592zM114.085 60v8H95.31v6.155L82 63.254l12.549-9.508v6.592z" 
+                                    opacity="1" data-original="#81d9e3" class=""></path>
+                                    <path fill="#80d0ff" d="M54 0h10v128H54z" opacity="1" data-original="#ffdb80" class=""></path>
+                                    <path fill="#51b2d6" d="M64 0h10v128H64z" opacity="1" data-original="#d68751" class=""></path>
+                                    <path fill="#223241" d="M64 127.5a2 2 0 0 0 2-2V2.5a2 2 0 0 0-4 0v10.315L56 3.89V2a2 2 0 0 0-4 0v124a2 2 0 0 0 4 0v-1.89l6-8.924V125.5a2 2 0 0 0 2 2zm-2-55.185L56.41 64 62 55.685zm0-29.75-5.59-8.315L62 25.935zM56 11.06l5.59 8.315L56 27.69zm0 29.75 5.59 8.315L56 57.44zm0 29.75 5.59 8.315L56 87.19zm0 46.38v-16.63l5.59 8.315zm.41-23.19L62 85.435v16.63zM112 58H97v-5a2 2 0 0 0-3.292-1.527l-13 11a2 2 0 0 0 0 3.053l13 11A2 2 0 0 0 97 75v-5h14.143a2 2 0 0 0 0-4H95a2 2 0 0 0-2 2v2.688L85.097 64 93 57.312V60a2 2 0 0 0 2 2h17a2 2 0 0 0 0-4zM33 62a2 2 0 0 0 2-2v-2.688L42.903 64 35 70.688V68a2 2 0 0 0-2-2H16.857a2 2 0 0 0 0 4H31v5a2 2 0 0 0 3.292 1.526l13-11a2 2 0 0 0 0-3.053l-13-11A2 2 0 0 0 31 53v5H16a2 2 0 0 0 0 4zM72 2v124a2 2 0 0 0 4 0V2a2 2 0 0 0-4 0z" 
+                                    opacity="1" data-original="#2d4356" class=""></path>
+                                    <path fill="#0f423c30" d="M113.14 66a1.995 1.995 0 0 1-.27 1 1.984 1.984 0 0 0-1.73-1H95a2.006 2.006 0 0 0-2 2v-2a2.006 2.006 0 0 1 2-2h16.14a2 2 0 0 1 2 2zM93 68.69v2L85.1 64l1.18-1zM35 66v2a2.006 2.006 0 0 0-2-2H16.86a1.984 1.984 0 0 0-1.73 1 1.997 1.997 0 0 1 1.73-3H33a2.006 2.006 0 0 1 2 2zM42.9 64 35 70.69v-2L41.72 63z" 
+                                    opacity="1" data-original="#0f423c30" class=""></path>
+                                    <g fill="#ad9359">
+                                        <path d="M61.59 108.62 56 116.94v-2l4.92-7.32zM62 100.06v2l-5.59-8.31.67-1zM61.59 78.88 56 87.19v-2l4.92-7.31zM62 70.31v2L56.41 64l.67-1zM61.59 49.12 56 57.44v-2l4.92-7.32zM62 40.56v2l-5.59-8.31.67-1zM61.59 19.38 56 27.69v-2l4.92-7.31z" 
+                                        opacity="1" fill="#ad935945" data-original="#ad935945" class=""></path>
                                     </g>
                                 </g>
-                            </svg>
+                            </svg>                      
                         </div>
                         <div class="spec-value" data-target="11">0</div>
                         <div class="spec-unit">mm</div>
@@ -221,7 +219,7 @@
 
                     <div class="spec-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="spec-icon">
-                            <svg height="60" viewBox="0 0 512 512" width="60" xmlns="http://www.w3.org/2000/svg" id="fi_7683526">
+                            <svg  viewBox="0 0 512 512" height="55" width="55" xmlns="http://www.w3.org/2000/svg" id="fi_7683526">
                                 <g>
                                     <g><path d="m48.7 112.29h128a120 120 0 0 1 120 120v152a0 0 0 0 1 0 0h-248a40 40 0 0 1 -40-40v-192a40 40 0 0 1 40-40z" 
                                         fill="#57565c"></path>
@@ -247,7 +245,7 @@
 
                     <div class="spec-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="spec-icon">
-                            <svg id="fi_15864160" height="60" width="60" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1">
+                            <svg id="fi_15864160" height="55" width="55" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1">
                                 <g fill-rule="evenodd">
                                     <path d="m256 16.084c66.25 0 126.229 26.854 169.645 70.27 43.417 43.416 70.27 103.395 70.27 169.645s-26.854 126.229-70.27 169.645c-43.416 43.417-103.395 70.27-169.645 70.27s-126.229-26.854-169.646-70.27c-43.417-43.417-70.27-103.395-70.27-169.646s26.854-126.229 70.27-169.645 103.395-70.27 169.646-70.27z" 
                                     fill="#231916"></path>
@@ -283,7 +281,7 @@
 
                     <div class="spec-card" data-aos="fade-up" data-aos-delay="400">
                         <div class="spec-icon">
-                            <svg id="fi_18229192" height="60" width="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <svg id="fi_18229192" height="55" width="55" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
                                 <path d="m7.64 9h20.36v4h-20.36z" fill="#825043"></path>
                                 <path d="m32 9h20.36v4h-20.36z" fill="#825043"></path>
                                 <path d="m28 15.59v32.41h4v-45c0-1.1-.9-2-2-2s-2 .9-2 2z" fill="#825043"></path>
