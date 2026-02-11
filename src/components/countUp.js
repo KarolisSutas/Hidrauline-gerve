@@ -1,4 +1,3 @@
-// Count-up animacija skaičiams (komponentas)
 
 export function initCountUp() {
     const observerOptions = {
