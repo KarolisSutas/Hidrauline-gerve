@@ -41,102 +41,104 @@ nav{
 
 /* ===== Slideshow ===== */
 
-.mySlides {
-  position: absolute;
-  inset: 0;
+.carousel-section {
+  padding-top: 60px;
 }
-
 
 .slideshow-container {
   position: relative;
+  isolation: isolate;
   width: 100%;
   aspect-ratio: 16 / 9;
-  max-height: 40vh;   
+  max-height: 100svh;
   overflow: hidden;
+  background: #0e0e0e;
+}
+
+/* Visi slide'ai – absolute, vienas ant kito */
+.mySlides {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.mySlides.is-active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .mySlides img {
   width: 100%;
   height: 100%;
-  object-fit: cover;        /* pakeisk į contain, jei nori be apkirpimo */
+  object-fit: cover;
   object-position: center;
   display: block;
 }
 
-.prev, .next {
-  cursor: pointer;
+/* Rodyklės */
+.slide-prev,
+.slide-next {
   position: absolute;
   top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.35);
   color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none; 
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-/* .text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-} */
-
-/* The dots/bullets/indicators */
-.dot {
+  border: none;
+  padding: 14px 12px;
+  font-size: 20px;
+  line-height: 1;
   cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
+  user-select: none;
+  transition: background 0.3s ease;
+  z-index: 5;
+}
+
+.slide-prev { left: 0; border-radius: 0 4px 4px 0; }
+.slide-next { right: 0; border-radius: 4px 0 0 4px; }
+
+.slide-prev:hover,
+.slide-next:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* Taškai (dots) */
+.carousel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+.carousel-dot {
+  width: clamp(8px, 1vw, 12px);
+  height: clamp(8px, 1vw, 12px);
   border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+  border: 2px solid #999;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
 }
 
-.active, .dot:hover {
-  background-color: #717171;
-}
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
+.carousel-dot.is-active,
+.carousel-dot:hover {
+  background: #e9e9e9;
+  border-color: #e9e9e9;
 }
 
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
+@media (max-width: 640px) {
+  .slide-prev,
+  .slide-next {
+    padding: 10px 8px;
+    font-size: 16px;
+  }
 
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
 }
 
 /* ===== HERO kortelė ===== */
@@ -318,7 +320,7 @@ nav{
   }
 }
 
-/* ===== Order btn ===== */
+/* ===== UŽSAKYTI btn ===== */
 .btn-order{
   padding: clamp(8px, 1.5vw, 15px) clamp(10px, 2.5vw, 32px);
   border: none;
@@ -468,14 +470,14 @@ nav{
 }
 
 .series-title {
-  font-size: 2rem;
+  font-size: clamp(20px, 2.5vw, 32px);
   font-weight: 700;
   color: #1c1917;
   margin-bottom: 16px;
 }
 
 .series-intro {
-  font-size: 1.1rem;
+  font-size: clamp(13px, 1.5vw, 18px);
   color: #2f2d2b;
   margin-bottom: 32px;
   line-height: 1.6;
@@ -509,7 +511,7 @@ nav{
   }
 }
 
-/* ===== SPEC kortelės ===== */
+/* ===== SPECS kortelės ===== */
 .gerve-table {
   margin-bottom: clamp(80px, 12vh, 140px);
 }
@@ -610,7 +612,7 @@ nav{
     filter: grayscale(0%);
   }
   
-  /* Touch feedback (kai paliečiama kortelė) */
+  /* Touch feedback (kai palė virš kortelės) */
   .spec-card:active {
     transform: scale(0.98);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -740,14 +742,6 @@ nav{
     font-size: 0.9rem;
     padding-top: 6px;
     margin-top: 3px;
-  }
-
-  .series-title {
-    font-size: 1.5rem;
-  }
-
-  .series-intro {
-    font-size: 1.05rem;
   }
 }
 

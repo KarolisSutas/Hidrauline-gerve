@@ -61,40 +61,47 @@
     </header>
     <main>
 
-        <section class="carousel-section flex flex-col justify-center items-center py-15">
+        <section class="carousel-section">
 
-            <div class="slideshow-container w-full relative overflow-hidden">
-
-                <div class="mySlides fade">
-                    <!-- <div class="numbertext">1 / 3</div> -->
-                    <img src="/img/lengvoji-gerve-1.jpeg">
-                    <!-- <div class="text">Caption Text</div> -->
+            <div class="slideshow-container">
+        
+                <div class="mySlides">
+                    <img src="/img/test-1.webp" alt="Slide 1" loading="eager">
                 </div>
         
-                <div class="mySlides fade">
-                    <!-- <div class="numbertext">2 / 3</div> -->
-                    <img src="/img/lengvoji-gerve-2.jpg">
-                    <!-- <div class="text">Caption Two</div> -->
+                <div class="mySlides">
+                    <img src="/img/test-2.webp" alt="Slide 2" loading="lazy">
                 </div>
         
-                <div class="mySlides fade">
-                    <!-- <div class="numbertext">3 / 3</div> -->
-                    <img src="/img/sunkioji-gerve-1.jpg">
-                    <!-- <div class="text">Caption Three</div> -->
+                <div class="mySlides">
+                    <img src="/img/test-3.webp" alt="Slide 3" loading="lazy">
                 </div>
         
-                <a class="prev" onclick="plusSlides(-1)">❮</a>
-                <a class="next" onclick="plusSlides(1)">❯</a>
+                <button class="slide-prev" aria-label="Ankstesnis">&#10094;</button>
+                <button class="slide-next" aria-label="Kitas">&#10095;</button>
         
+                <div class="carousel-dots">
+                    <button class="carousel-dot" aria-label="Slide 1"></button>
+                    <button class="carousel-dot" aria-label="Slide 2"></button>
+                    <button class="carousel-dot" aria-label="Slide 3"></button>
+                </div>
             </div>
-            <br>
+            
         
-            <div style="text-align:center">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-            </div>
+        
+        </section>
 
+        <section class="about-series-section flex flex-col justify-center items-center pt-10 px-10 text-slate-950">
+            <div class="series-description">
+                <h2 class="series-title"></h2>
+                <p class="series-intro">
+                    Europos gamybos hidraulinės gervės, sukurtos kasdieniam profesionaliam darbui. 
+                </p>
+                <p class="series-intro">
+                    Miškų technika, sunkvežimiai, traktoriai - mūsų gervės užtikrina patikimą traukimo jėgą ten, kur jos reikia labiausiai.
+                </p>
+
+            </div>
         </section>
 
         <div class="section-divider" aria-hidden="true">

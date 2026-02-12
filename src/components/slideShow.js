@@ -1,72 +1,114 @@
-
-
 export function initSlideShow() {
-    let slideIndex = 1;
-    let slideTimer;
-    let isPaused = false; // stebim, ar sustabdyta
+    const container = document.querySelector('.slideshow-container');
+    if (!container) return;
 
-    const container = document.querySelector(".slideshow-container");
+    const slides = container.querySelectorAll('.mySlides');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = container.querySelector('.slide-prev');
+    const nextBtn = container.querySelector('.slide-next');
+    const total = slides.length;
 
-    showSlides(slideIndex);
+    if (total === 0) return;
 
-    function plusSlides(n) {
-        showSlides(slideIndex += n, true); // true – reiškia rankinis keitimas
+    let current = 0;
+    let timer = null;
+    let paused = false;
+    const INTERVAL = 6000;
+    const RESUME_DELAY = 7000;
+
+    // ——— Core ———
+
+    function goTo(index) {
+        if (index >= total) index = 0;
+        if (index < 0) index = total - 1;
+
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('is-active', i === index);
+        });
+
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('is-active', i === index);
+        });
+
+        current = index;
+        restartTimer();
     }
 
-    function currentSlide(n) {
-        showSlides(slideIndex = n, true);
-    }
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
 
-    // PADAROM GLOBALIAI, kad onclick jas rastų
-    window.plusSlides = plusSlides;
-    window.currentSlide = currentSlide;
+    // ——— Auto-play ———
 
-    showSlides(slideIndex);
-
-    function showSlides(n) {
-        const slides = document.getElementsByClassName("mySlides");
-        const dots = document.getElementsByClassName("dot");
-
-        if (n > slides.length) slideIndex = 1;
-        if (n < 1) slideIndex = slides.length;
-
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-
-        for (let i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-
-        // sustabdom seną laikmatį
-        clearTimeout(slideTimer);
-
-        // jei rankinis keitimas, iš naujo startuojam laikmatį
-        if (!isPaused) {
-            slideTimer = setTimeout(() => showSlides(slideIndex += 1), 3000);
+    function restartTimer() {
+        clearInterval(timer);
+        if (!paused) {
+            timer = setInterval(() => goTo(current + 1), INTERVAL);
         }
     }
 
-    // sustabdyti automatinį slinkimą
-    function stopSlides() {
-        isPaused = true;
-        clearTimeout(slideTimer);
+    function pause() {
+        paused = true;
+        clearInterval(timer);
     }
 
-    // tęsti automatinį slinkimą
-    function startSlides() {
-        isPaused = false;
-        clearTimeout(slideTimer);
-        slideTimer = setTimeout(() => showSlides(slideIndex += 1), 7000);
+    function resume() {
+        paused = false;
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), RESUME_DELAY);
+        // po pirmo tick grįžtam prie normalaus intervalo
+        setTimeout(() => {
+            if (!paused) restartTimer();
+        }, RESUME_DELAY);
     }
 
-    // užvedus pelę – sustoja
-    container.addEventListener("mouseenter", stopSlides);
-    // nuėmus pelę – tęsia
-    container.addEventListener("mouseleave", startSlides);
+    // ——— Event listeners ———
 
-    console.log(isPaused);
+    prevBtn?.addEventListener('click', prev);
+    nextBtn?.addEventListener('click', next);
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => goTo(i));
+    });
+
+    container.addEventListener('mouseenter', pause);
+    container.addEventListener('mouseleave', resume);
+
+    // ——— Keyboard ———
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prev();
+        if (e.key === 'ArrowRight') next();
+    });
+
+    // ——— Swipe (touch) ———
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isSwiping = false;
+
+    container.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+        isSwiping = true;
+        pause();
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+        if (!isSwiping) return;
+        isSwiping = false;
+
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+
+        // tik horizontalus swipe (ne scroll)
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+            dx < 0 ? next() : prev();
+        }
+
+        resume();
+    }, { passive: true });
+
+    // ——— Init ———
+
+    goTo(0);
 }
