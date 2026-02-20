@@ -50,7 +50,7 @@
                                 class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Produktai</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="#" data-open-drawer
                                 class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Kontaktai</a>
                         </li>
                     </ul>
@@ -368,6 +368,119 @@
 
         
     </main>
+
+    <!-- Drawer backdrop -->
+    <div id="drawer-backdrop"
+        class="fixed inset-0 bg-black/40 z-40 opacity-0 pointer-events-none transition-opacity duration-300"
+        aria-hidden="true"></div>
+
+    <!-- Kontaktų drawer -->
+    <div id="contact-drawer"
+        class="fixed top-0 right-0 z-50 h-screen overflow-y-auto bg-neutral-700 w-full sm:w-80 md:w-110 translate-x-full transition-transform duration-300 ease-in-out"
+        role="dialog" aria-modal="true" aria-labelledby="drawer-title" inert>
+
+        <!-- Viršus -->
+        <div class="border-b border-red-800 pl-6 pr-2 md:pr-4 pt-24 md:pt-20 pb-5 flex items-center justify-between">
+            <h2 id="drawer-title" class="text-lg font-semibold text-white flex items-center gap-2">
+                <svg class="w-5 h-5 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" />
+                </svg>
+                Susisiekite
+            </h2>
+            <button id="drawer-close" type="button" aria-label="Uždaryti"
+                class="text-white hover:text-red-700 w-9 h-9 flex items-center justify-center transition-colors">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M6 18 17.94 6M18 18 6.06 6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="px-6 py-6 space-y-8">
+            <!-- Kontaktinė informacija -->
+            <div>
+                <h3 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Kontaktai</h3>
+                <ul class="space-y-3 text-sm text-white">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-white shrink-0 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11.042 11.042 0 0 0 5.516 5.516l1.13-2.257a1 1 0 0 1 1.21-.502l4.493 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        <a href="tel:+37060000000" class="hover:text-red-400 transition-colors">+370 625 14383</a>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-white shrink-0 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" />
+                        </svg>
+                        <a href="mailto:info@hidraulinegerve.lt" class="hover:text-red-400 transition-colors">info@aukstaitijosvilktis.lt</a>
+                    </li>
+                </ul>
+
+                <!-- Įmonės duomenys -->
+                <div class="mt-5 pt-4 border-t border-red-700 space-y-1.5 text-xs text-white">
+                    <p><span class="text-white">Įmonės kodas:</span> 305715513</p>
+                    <p><span class="text-white">PVM kodas:</span> LT100014002319</p>
+                </div>
+            </div>
+
+            <!-- Forma -->
+            <div>
+                <h3 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Siųsti užklausą</h3>
+                <form id="contact-form" novalidate class="space-y-4">
+                    <div>
+                        <label for="drawer-vardas" class="block text-xs font-medium text-red-200 mb-1.5">Vardas <span aria-hidden="true" class="text-red-300">*</span></label>
+                        <input type="text" id="drawer-vardas" name="vardas" required
+                            placeholder="pvz. Juozas Petraitis"
+                            class="w-full px-3 py-2.5 text-sm rounded-lg bg-stone-800/50 border border-stone-600 text-white placeholder-stone-300 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors" />
+                    </div>
+                    <div>
+                        <label for="drawer-email" class="block text-xs font-medium text-red-200 mb-1.5">El. paštas <span aria-hidden="true" class="text-red-300">*</span></label>
+                        <input type="email" id="drawer-email" name="email" required
+                            placeholder="jusu@pastas.lt"
+                            class="w-full px-3 py-2.5 text-sm rounded-lg bg-stone-800/50 border border-stone-600 text-white placeholder-stone-300 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors" />
+                    </div>
+                    <div>
+                        <label for="drawer-telefonas" class="block text-xs font-medium text-red-200 mb-1.5">Telefonas <span aria-hidden="true" class="text-red-300">*</span></label>
+                        <div class="flex rounded-lg overflow-hidden border border-stone-600 focus-within:border-white focus-within:ring-1 focus-within:ring-white transition-colors">
+                            <span class="px-3 flex items-center text-sm text-white bg-stone-800/50 border border-stone-600 select-none">+370</span>
+                            <input type="tel" id="drawer-telefonas" name="telefonas" required
+                                placeholder=""
+                                inputmode="numeric"
+                                pattern="[0-9\s]{7,11}"
+                                class="w-full px-3 py-2.5 text-sm bg-stone-800/50 border border-stone-600 text-white placeholder-stone-300 focus:outline-none" />
+                        </div>
+                    </div>                    
+                    <div>
+                        <label for="drawer-tema" class="block text-xs font-medium text-red-200 mb-1.5">Tema <span aria-hidden="true" class="text-red-300">*</span></label>
+                        <input type="text" id="drawer-tema" name="tema" required
+                            placeholder="pvz. Lengvoji serija – užklausa"
+                            class="w-full px-3 py-2.5 text-sm rounded-lg bg-stone-800/50 border border-stone-600 text-white placeholder-stone-300 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors" />
+                    </div>
+                    <div>
+                        <label for="drawer-zinute" class="block text-xs font-medium text-red-200 mb-1.5">Žinutė <span aria-hidden="true" class="text-red-300">*</span></label>
+                        <textarea id="drawer-zinute" name="zinute" required rows="4"
+                            placeholder="Aprašykite savo poreikį..."
+                            class="w-full px-3 py-2.5 text-sm rounded-lg bg-stone-800/50 border border-stone-600 text-white placeholder-stone-300 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors resize-none"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full py-3 px-4 bg-white text-red-800 font-semibold text-sm rounded-lg hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-800 transition-colors flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                        Siųsti užklausą
+                    </button>
+
+                    <p id="form-success" class="hidden text-center text-sm text-white bg-emerald-600 rounded-lg py-2.5 px-4">
+                        ✓ Užklausa išsiųsta! Susisieksime greitai.
+                    </p>
+                </form>
+            </div>
+
+        </div>
+    </div>
 
 </body>
 

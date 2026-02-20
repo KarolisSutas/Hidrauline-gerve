@@ -70,6 +70,7 @@ export function initSlideShow() {
         dot.addEventListener('click', () => goTo(i));
     });
 
+    // pries builda nuimti!!!
     container.addEventListener('mouseenter', pause);
     container.addEventListener('mouseleave', resume);
 
