@@ -1237,3 +1237,34 @@ footer{
   .gallery-thumb{ width: 92px; height: 70px; }
   .gallery-modal-panel{ height: 72vh; margin-top: 10vh; }
 }
+
+/* ===== Kontaktai Page Form ===== */
+.contact-label {
+  display: block;
+  font-size: clamp(12px, 0.85vw, 13px);
+  font-weight: 500;
+  color: #525252;
+  margin-bottom: 6px;
+  font-family: var(--font-body);
+}
+
+.contact-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #d4d4d4;
+  color: #171717;
+  font-family: var(--font-body);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-input::placeholder {
+  color: #a3a3a3;
+}
+
+.contact-input:focus {
+  outline: none;
+  border-color: #991b1b;
+  box-shadow: 0 0 0 1px #991b1b;
+}

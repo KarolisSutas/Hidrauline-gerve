@@ -13,8 +13,8 @@ export function initSlideShow() {
     let current = 0;
     let timer = null;
     let paused = false;
-    const INTERVAL = 36000;
-    const RESUME_DELAY = 36000;
+    const INTERVAL = 6000;
+    const RESUME_DELAY = 7000;
 
     // ——— Core ———
 
