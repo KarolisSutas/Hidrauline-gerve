@@ -81,7 +81,7 @@ nav{
   text-decoration: none;
   white-space: nowrap;
   background: linear-gradient(to bottom, rgba(26, 26, 26, 0.9), rgb(42, 42, 42, 0.9));
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   transition: all 0.2s ease;
 }
 
@@ -183,6 +183,67 @@ footer{
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
+/* ==== Slide'ų turinys ==== */
+
+/* Gradient overlay – vietoj juodos dėžutės */
+.mySlides::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.slide-content {
+  position: absolute;
+  z-index: 3;
+  bottom: 12%;
+  left: 6%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slide-title {
+  font-size: clamp(24px, 3.5vw, 48px);
+  color: #ffffff;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.slide-description {
+  font-size: clamp(14px, 1.8vw, 20px);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.slide-content .product-btn {
+  align-self: flex-start;
+  margin-top: 8px;
+  background: #991b1b;
+  color: #ffffff;
+  border: none;
+  padding: 10px 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.slide-content .product-btn:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
 }
 
 /* Rodyklės */
@@ -598,7 +659,7 @@ footer{
   }
 }
 
-/* ===== UŽSAKYTI btn ===== */
+/* ===== UŽKLAUSA btn ===== */
 .btn-order{
   padding: clamp(8px, 1.5vw, 15px) clamp(10px, 2.5vw, 32px);
   border: none;
