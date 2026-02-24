@@ -6,6 +6,7 @@ import { initGallery } from './components/gallery';
 import { initSlideShow } from './components/slideShow';
 import { initDrawer } from './components/drawer';
 import { initNavDropdown } from './components/navDropdown';
+import { initForm } from './components/form';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,4 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSlideShow();
     initDrawer();
     initNavDropdown();
+    initForm('contact-form', 'form-success');
+    initForm('contact-page-form', 'page-form-success');
 });
