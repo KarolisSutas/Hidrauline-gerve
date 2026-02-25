@@ -8,6 +8,7 @@ import { initDrawer } from './components/drawer';
 import { initNavDropdown } from './components/navDropdown';
 import { initForm } from './components/form';
 import { initCardScrollAnimation } from './components/cardScrollAnimation';
+import { initNavLink } from './components/navLink';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,4 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initForm('contact-form', 'form-success');
     initForm('contact-page-form', 'page-form-success');
     initCardScrollAnimation();
+    initNavLink();
 });

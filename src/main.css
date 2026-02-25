@@ -2257,7 +2257,7 @@ footer{
 .hero-accent-line {
   width: 80px;
   height: 3px;
-  background: #991b1b;
+  background: rgb(153, 27, 27);
   margin: 0 auto;
   opacity: 0;
   transform: scaleX(0);
