@@ -2,8 +2,8 @@ export function initSlideShow() {
     const container = document.querySelector('.slideshow-container');
     if (!container) return;
 
-    const slides = container.querySelectorAll('.mySlides');
-    const dots = document.querySelectorAll('.carousel-dot');
+    const slides = Array.from(container.querySelectorAll('.mySlides'));
+    const dots = Array.from(container.querySelectorAll('.carousel-dot'));
     const prevBtn = container.querySelector('.slide-prev');
     const nextBtn = container.querySelector('.slide-next');
     const total = slides.length;
@@ -11,17 +11,11 @@ export function initSlideShow() {
     if (total === 0) return;
 
     let current = 0;
-    let timer = null;
-    let paused = false;
-    const INTERVAL = 6000;
-    const RESUME_DELAY = 7000;
+    let timerId = null;
 
-    // ——— Core ———
+    const INTERVAL = 5000; // kas 5 sekundes
 
-    function goTo(index) {
-        if (index >= total) index = 0;
-        if (index < 0) index = total - 1;
-
+    function render(index) {
         slides.forEach((slide, i) => {
             slide.classList.toggle('is-active', i === index);
         });
@@ -29,87 +23,108 @@ export function initSlideShow() {
         dots.forEach((dot, i) => {
             dot.classList.toggle('is-active', i === index);
         });
+    }
 
-        current = index;
-        restartTimer();
+    function normalize(index) {
+        if (index >= total) return 0;
+        if (index < 0) return total - 1;
+        return index;
+    }
+
+    function startTimer() {
+        stopTimer();
+        timerId = setInterval(() => {
+            goTo(current + 1, { restart: false }); // intervalas pats save jau valdo
+        }, INTERVAL);
+    }
+
+    function stopTimer() {
+        if (timerId !== null) {
+            clearInterval(timerId);
+            timerId = null;
+        }
+    }
+
+    function goTo(index, { restart = true } = {}) {
+        current = normalize(index);
+        render(current);
+        if (restart) startTimer();
     }
 
     function next() { goTo(current + 1); }
     function prev() { goTo(current - 1); }
 
-    // ——— Auto-play ———
+    // ---- Event handlers (su nuorodomis, kad būtų galima destroy) ----
+    const onPrevClick = () => prev();
+    const onNextClick = () => next();
 
-    function restartTimer() {
-        clearInterval(timer);
-        if (!paused) {
-            timer = setInterval(() => goTo(current + 1), INTERVAL);
-        }
-    }
+    const dotHandlers = dots.map((_, i) => () => goTo(i));
 
-    function pause() {
-        paused = true;
-        clearInterval(timer);
-    }
+    const onKeyDown = (e) => {
+        // jei yra input/textarea – nelendam (kad netrukdytų rašant)
+        const tag = document.activeElement?.tagName?.toLowerCase();
+        if (tag === 'input' || tag === 'textarea') return;
 
-    function resume() {
-        paused = false;
-        clearInterval(timer);
-        timer = setInterval(() => goTo(current + 1), RESUME_DELAY);
-        // po pirmo tick grįžtam prie normalaus intervalo
-        setTimeout(() => {
-            if (!paused) restartTimer();
-        }, RESUME_DELAY);
-    }
-
-    // ——— Event listeners ———
-
-    prevBtn?.addEventListener('click', prev);
-    nextBtn?.addEventListener('click', next);
-
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => goTo(i));
-    });
-
-    // pries builda nuimti!!!
-    container.addEventListener('mouseenter', pause);
-    container.addEventListener('mouseleave', resume);
-
-    // ——— Keyboard ———
-
-    document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') prev();
         if (e.key === 'ArrowRight') next();
-    });
+    };
 
-    // ——— Swipe (touch) ———
-
+    // ---- Swipe (touch) ----
     let touchStartX = 0;
     let touchStartY = 0;
-    let isSwiping = false;
+    let touching = false;
 
-    container.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].clientX;
-        touchStartY = e.changedTouches[0].clientY;
-        isSwiping = true;
-        pause();
-    }, { passive: true });
+    const onTouchStart = (e) => {
+        const t = e.changedTouches[0];
+        touchStartX = t.clientX;
+        touchStartY = t.clientY;
+        touching = true;
+    };
 
-    container.addEventListener('touchend', (e) => {
-        if (!isSwiping) return;
-        isSwiping = false;
+    const onTouchEnd = (e) => {
+        if (!touching) return;
+        touching = false;
 
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        const dy = e.changedTouches[0].clientY - touchStartY;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - touchStartX;
+        const dy = t.clientY - touchStartY;
 
         // tik horizontalus swipe (ne scroll)
         if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
             dx < 0 ? next() : prev();
+        } else {
+            // jei nebuvo swipe, timerio nereikia restartint
+            // (palieku ramiai)
         }
+    };
 
-        resume();
-    }, { passive: true });
+    // ---- Listeners ----
+    prevBtn?.addEventListener('click', onPrevClick);
+    nextBtn?.addEventListener('click', onNextClick);
 
-    // ——— Init ———
+    dots.forEach((dot, i) => dot.addEventListener('click', dotHandlers[i]));
 
-    goTo(0);
+    document.addEventListener('keydown', onKeyDown);
+
+    container.addEventListener('touchstart', onTouchStart, { passive: true });
+    container.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    // ---- Init ----
+    render(0);
+    startTimer();
+
+    // ---- Optional: grąžinam destroy(), kad neliktų "prikabintų" listenerių ----
+    return function destroy() {
+        stopTimer();
+
+        prevBtn?.removeEventListener('click', onPrevClick);
+        nextBtn?.removeEventListener('click', onNextClick);
+
+        dots.forEach((dot, i) => dot.removeEventListener('click', dotHandlers[i]));
+
+        document.removeEventListener('keydown', onKeyDown);
+
+        container.removeEventListener('touchstart', onTouchStart, { passive: true });
+        container.removeEventListener('touchend', onTouchEnd, { passive: true });
+    };
 }
