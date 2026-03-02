@@ -17,11 +17,25 @@ export function initSlideShow() {
 
     function render(index) {
         slides.forEach((slide, i) => {
-            slide.classList.toggle('is-active', i === index);
+            const active = i === index;
+
+            // vizualinė būsena
+            slide.classList.toggle('is-active', active);
+
+            // accessibility
+            slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+
+            // kad TAB nevaikščiotų per nematomas slides
+            slide.setAttribute('tabindex', active ? '0' : '-1');
         });
 
         dots.forEach((dot, i) => {
-            dot.classList.toggle('is-active', i === index);
+            const active = i === index;
+
+            dot.classList.toggle('is-active', active);
+
+            // kuris dot aktyvus
+            dot.setAttribute('aria-current', active ? 'true' : 'false');
         });
     }
 

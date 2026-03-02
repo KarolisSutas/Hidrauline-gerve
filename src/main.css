@@ -170,11 +170,13 @@ footer{
   opacity: 0;
   transition: opacity 0.8s ease;
   pointer-events: none;
+  z-index: 0;
 }
 
 .mySlides.is-active {
   opacity: 1;
   pointer-events: auto;
+  z-index: 1;
 }
 
 .mySlides img {
@@ -278,6 +280,7 @@ footer{
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 5;
   display: flex;
   justify-content: center;
   gap: 8px;
