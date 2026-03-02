@@ -1300,7 +1300,7 @@ footer{
   font-size: 1.2rem;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 410px) {
   .series-features {
     flex-direction: column;
     gap: 16px;
@@ -1357,7 +1357,7 @@ footer{
 }
 
 .spec-value {
-  font-size: 3rem;
+  font-size: clamp(18px, 3vw, 30px);
   font-weight: 800;
   color: #1c1917;
   line-height: 1;
@@ -1375,7 +1375,7 @@ footer{
 }
 
 .spec-label {
-  font-size: 1.3rem;
+  font-size: clamp(14px, 2vw, 18px);
   color: #57534e;
   font-weight: 500;
   border-top: 1px solid #d6d3d1;
@@ -1449,18 +1449,12 @@ footer{
     width: 45px;
     height: 45px;
   }
-  
-  .spec-value {
-    font-size: 2.5rem;
-  }
-  
+    
   .spec-unit {
-    font-size: 0.85rem;
     margin-bottom: 10px;
   }
   
   .spec-label {
-    font-size: 1.1rem;
     padding-top: 10px;
     margin-top: 6px;
   }
@@ -1492,7 +1486,6 @@ footer{
   }
   
   .spec-value {
-    font-size: 2rem;
     margin-bottom: 4px;
   }
   
@@ -1502,7 +1495,6 @@ footer{
   }
   
   .spec-label {
-    font-size: 1rem;
     padding-top: 8px;
     margin-top: 4px;
   }
@@ -1527,18 +1519,13 @@ footer{
     width: 32px;
     height: 32px;
   }
-  
-  .spec-value {
-    font-size: 1.8rem;
-  }
-  
+    
   .spec-unit {
     font-size: 0.7rem;
     margin-bottom: 6px;
   }
   
   .spec-label {
-    font-size: 0.9rem;
     padding-top: 6px;
     margin-top: 3px;
   }
@@ -1556,10 +1543,6 @@ footer{
   );
   padding: clamp(80px, 10vh, 140px) 15px;
   border-top: 1px solid #d6d3d1;
-}
-
-.gallery-section h1 {
-  font-size: clamp(24px, 3vw, 36px);
 }
 
 .gallery-main { position: relative; display: block; }
