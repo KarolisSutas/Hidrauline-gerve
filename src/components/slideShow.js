@@ -39,7 +39,7 @@ export function initSlideShow() {
         });
     }
 
-    function normalize(index) {
+    function wrapSlides(index) {
         if (index >= total) return 0;
         if (index < 0) return total - 1;
         return index;
@@ -60,7 +60,7 @@ export function initSlideShow() {
     }
 
     function goTo(index, { restart = true } = {}) {
-        current = normalize(index);
+        current = wrapSlides(index);
         render(current);
         if (restart) startTimer();
     }
