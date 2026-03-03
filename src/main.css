@@ -15,10 +15,6 @@ h1, h2, h3, nav, a, .btn-order{
   font-family: var(--font-heading);
 }
 
-.footer-phone {
-  font-family: var(--font-body);
-}
-
 p, li{
   font-family: var(--font-body);
   padding-inline: 5px;
@@ -132,6 +128,12 @@ nav{
   }
 }
 
+/* =====  Footer ===== */
+
+.footer-phone {
+  font-family: var(--font-body);
+}
+
 footer{
     font-optical-sizing: auto;
     font-weight: 800;
@@ -143,6 +145,17 @@ footer{
       #5a5a5a 100%
     );
     box-shadow: 0 1px 0 rgba(255,255,255,.06);
+}
+
+@media screen and (max-width: 370px) {
+  .foot-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  } 
+  .foot-links > *:last-child {
+    grid-column: 2;
+  }
 }
 
 /* ===== Slideshow(titulinis) ===== */
