@@ -167,6 +167,12 @@ footer{
   width: 100%;
 }
 
+@media screen and (min-width: 768px) {
+  .carousel-section {
+    padding-top: 100px;
+  }
+}
+
 .slideshow-container {
   position: relative;
   isolation: isolate;
@@ -599,14 +605,22 @@ footer{
 /* ===== Produktai Hero ===== */
 .produktai-hero {
   position: relative;
-  padding-top: 60px;
-  min-height: 55svh;
+  padding-top: 80px;
+  min-height: 30svh;
   max-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   background: #0e0e0e;
+}
+
+@media screen and (min-width: 768px) {
+  .produktai-hero {
+    padding-top: 100px;
+    min-height: 40svh;
+  }
+  
 }
 
 .produktai-hero::before {

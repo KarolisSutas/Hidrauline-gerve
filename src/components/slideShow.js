@@ -19,21 +19,22 @@ export function initSlideShow() {
         slides.forEach((slide, i) => {
             const active = i === index;
 
+            // jei šis slide turi fokusą – perkelti į aktyvų
+        if (!active && slide.contains(document.activeElement)) {
+            slides[index]?.focus();
+        }
+
             // vizualinė būsena
             slide.classList.toggle('is-active', active);
-
             // accessibility
             slide.setAttribute('aria-hidden', active ? 'false' : 'true');
-
             // kad TAB nevaikščiotų per nematomas slides
             slide.setAttribute('tabindex', active ? '0' : '-1');
         });
 
         dots.forEach((dot, i) => {
             const active = i === index;
-
             dot.classList.toggle('is-active', active);
-
             // kuris dot aktyvus
             dot.setAttribute('aria-current', active ? 'true' : 'false');
         });
