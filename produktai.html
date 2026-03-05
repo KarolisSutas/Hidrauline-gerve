@@ -445,10 +445,10 @@
                             class="w-full px-3 py-2.5 text-sm rounded-lg bg-stone-800/50 border border-stone-600 text-white placeholder-stone-300 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors" />
                     </div>
                     <div>
-                        <label for="drawer-telefonas" class="block text-xs font-medium text-red-200 mb-1.5">Telefonas <span aria-hidden="true" class="text-red-300">*</span></label>
+                        <label for="drawer-telefonas" class="block text-xs font-medium text-red-200 mb-1.5">Telefonas</label>
                         <div class="flex rounded-lg overflow-hidden border border-stone-600 focus-within:border-white focus-within:ring-1 focus-within:ring-white transition-colors">
                             <span class="px-3 flex items-center text-sm text-white bg-stone-800/50 border border-stone-600 select-none">+370</span>
-                            <input type="tel" id="drawer-telefonas" name="telefonas" required
+                            <input type="tel" id="drawer-telefonas" name="telefonas"
                                 placeholder=""
                                 inputmode="numeric"
                                 pattern="[0-9\s]{7,11}"
@@ -471,6 +471,10 @@
                         <input type="checkbox" class="accent-red-400" required> Sutinku su 
                         <a href="/privatumas" class="text-red-200 hover:text-red-500">privatumo politika</a>
                     </label>
+                    <!-- Honeypot -->
+                    <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;">
+                        <input type="text" name="website" tabindex="-1" autocomplete="off" />
+                    </div>
                     <button type="submit"
                         class="w-full py-3 px-4 bg-white text-red-800 font-semibold text-sm rounded-lg hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-800 transition-colors flex items-center justify-center gap-2">
                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -482,6 +486,8 @@
 
                     <p id="form-success" class="hidden text-center text-sm text-white bg-emerald-600 rounded-lg py-2.5 px-4">
                         ✓ Užklausa išsiųsta! Susisieksime greitai.
+                    </p>
+                    <p id="form-error" class="hidden text-center text-sm text-white bg-red-700 rounded-lg py-2.5 px-4">
                     </p>
                 </form>
             </div>

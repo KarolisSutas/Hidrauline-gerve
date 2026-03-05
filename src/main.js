@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initSlideShow();
     initDrawer();
     initNavDropdown();
-    initForm('contact-form', 'form-success');
-    initForm('contact-page-form', 'page-form-success');
+    initForm('contact-form', 'form-success', 'form-error');
+    initForm('contact-page-form', 'page-form-success', 'page-form-error')
     initCardScrollAnimation();
     initNavLink();
 });

@@ -69,4 +69,9 @@ export function initDrawer() {
             closeDrawer();
         }
     });
+
+    // FORMOS LOGIKA PERKELTA Į form.js
+    // Drawer forma inicializuojama per:
+    // initForm('contact-form', 'form-success', 'form-error')
 }
+
