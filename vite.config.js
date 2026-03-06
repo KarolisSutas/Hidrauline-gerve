@@ -21,6 +21,12 @@ export default defineConfig({
     },
     plugins: [
         {
+            name: 'remove-html-comments',
+            transformIndexHtml(html) {
+                return html.replace(/<!--[\s\S]*?-->/g, '');
+            },
+        },
+        {
             name: 'html-rewrite',
             configureServer(server) {
                 server.middlewares.use((req, res, next) => {
