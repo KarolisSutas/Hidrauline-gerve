@@ -11,7 +11,7 @@ const RECAPTCHA_SITE_KEY = '6LfbwYEsAAAAAEO62dcUHCCWWDCWdAV3cR6BJI_h';
  * Gauti reCAPTCHA v3 token
  */
 async function getRecaptchaToken() {
-    if (!RECAPTCHA_SITE_KEY || typeof grecaptcha === 'undefined') {
+    if (!RECAPTCHA_SITE_KEY || typeof grecaptcha === 'undefined' || !grecaptcha?.ready) {
         return '';
     }
 
