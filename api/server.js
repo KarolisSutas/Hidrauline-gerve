@@ -125,7 +125,7 @@ app.post('/api/contact', rateLimiter, async (req, res) => {
 
         // 1. Honeypot patikrinimas
         if (website) {
-            // Atsakome "sėkmingai" kad botas nesuprasto
+            // Atsakome "sėkmingai" kad botas nesuprastų
             console.log('🍯 Honeypot sugavo botą');
             return res.json({ success: true });
         }
@@ -180,7 +180,7 @@ app.post('/api/contact', rateLimiter, async (req, res) => {
                 </table>
                 <hr style="margin-top:24px; border:none; border-top:1px solid #ddd;">
                 <p style="font-size:12px; color:#999;">
-                    Šis laiškas sugeneruotas automatiškai iš hidrauline-gerve.lt kontaktų formos.
+                    Šis laiškas sugeneruotas automatiškai iš www.hidraulinesgerves.lt kontaktų formos.
                 </p>
             `,
         });
