@@ -5,7 +5,7 @@
 
 // reCAPTCHA v3 site key (pakeisk į savo!)
 // Jei tuščias — reCAPTCHA bus praleista
-const RECAPTCHA_SITE_KEY = ''; // pvz. '6Le...'
+const RECAPTCHA_SITE_KEY = '6LfbwYEsAAAAAEO62dcUHCCWWDCWdAV3cR6BJI_h';
 
 /**
  * Gauti reCAPTCHA v3 token
