@@ -68,9 +68,14 @@ transporter.verify()
 
 // --- reCAPTCHA v3 tikrinimas ---
 async function verifyRecaptcha(token) {
-    // Jei reCAPTCHA neaktyvuota — praleisti
     if (!process.env.RECAPTCHA_SECRET) {
         console.warn('⚠️  RECAPTCHA_SECRET nenustatytas — praleidžiama');
+        return true;
+    }
+
+    // Jei token tuščias — reCAPTCHA neužsikrovė klientui
+    if (!token) {
+        console.warn('⚠️  reCAPTCHA token tuščias — praleidžiama');
         return true;
     }
 
