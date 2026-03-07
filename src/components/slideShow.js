@@ -21,7 +21,7 @@ export function initSlideShow() {
 
             // jei šis slide turi fokusą – perkelti į aktyvų
         if (!active && slide.contains(document.activeElement)) {
-            slides[index]?.focus();
+            slides[index]?.focus({ preventScroll: true });
         }
 
             // vizualinė būsena
