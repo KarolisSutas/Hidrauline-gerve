@@ -69,14 +69,13 @@ transporter.verify()
 // --- reCAPTCHA v3 tikrinimas ---
 async function verifyRecaptcha(token) {
     if (!process.env.RECAPTCHA_SECRET) {
-        console.warn('⚠️  RECAPTCHA_SECRET nenustatytas — praleidžiama');
-        return true;
+        console.error('❌ RECAPTCHA_SECRET nenustatytas — užklausa blokuojama');
+        return false;
     }
 
-    // Jei token tuščias — reCAPTCHA neužsikrovė klientui
     if (!token) {
-        console.warn('⚠️  reCAPTCHA token tuščias — praleidžiama');
-        return true;
+        console.warn('⚠️  reCAPTCHA token tuščias — užklausa blokuojama');
+        return false;
     }
 
     try {
@@ -89,12 +88,20 @@ async function verifyRecaptcha(token) {
             }),
         });
 
-        const data = await response.json();
-        console.log('reCAPTCHA score:', data.score);
+        if (!response.ok) {
+            console.error('❌ reCAPTCHA API atsakė:', response.status);
+            return false;
+        }
 
-        return data.success && data.score >= 0.5;
+        const data = await response.json();
+
+        if (data.score < 0.7) {
+            console.warn('⚠️  Žemas reCAPTCHA score:', data.score, '| action:', data.action);
+        }
+
+        return data.success && data.score >= 0.5 && data.action === 'contact';
     } catch (err) {
-        console.error('reCAPTCHA klaida:', err.message);
+        console.error('❌ reCAPTCHA klaida:', err.message);
         return false;
     }
 }
@@ -136,10 +143,19 @@ app.post('/api/contact', rateLimiter, async (req, res) => {
         }
 
         // 2. reCAPTCHA patikrinimas
+        if (!recaptchaToken) {
+            return res.status(400).json({
+                success: false,
+                code: 'recaptcha_missing',
+                message: 'Apsaugos patikra neužsikrovė. Išjunkite skelbimų blokavimo plėtinį (ad-blocker) arba pabandykite kita naršyklę.'
+            });
+        }
+        
         const captchaOk = await verifyRecaptcha(recaptchaToken);
         if (!captchaOk) {
             return res.status(400).json({
                 success: false,
+                code: 'recaptcha_failed',
                 message: 'Nepavyko patvirtinti, kad nesate robotas. Pabandykite dar kartą.'
             });
         }

@@ -3,8 +3,7 @@
 // Honeypot + reCAPTCHA v3 + fetch() į backend
 // ============================================
 
-// reCAPTCHA v3 site key (pakeisk į savo!)
-// Jei tuščias — reCAPTCHA bus praleista
+// reCAPTCHA v3 site key
 const RECAPTCHA_SITE_KEY = '6LfbwYEsAAAAAEO62dcUHCCWWDCWdAV3cR6BJI_h';
 
 /**
@@ -94,7 +93,13 @@ export function initForm(formId, successId, errorId) {
                 setTimeout(() => success?.classList.add('hidden'), 8000);
             } else {
                 // Serveris grąžino klaidą
-                showError(error, result.message || 'Nepavyko išsiųsti. Pabandykite vėliau.');
+                let message = result.message || 'Nepavyko išsiųsti. Pabandykite vėliau.';
+
+                if (result.code === 'recaptcha_missing' || result.code === 'recaptcha_failed') {
+                    message += ' Arba rašykite tiesiogiai: info@aukstaitijosvilktis.lt';
+                }
+
+                showError(error, message);
             }
 
         } catch (err) {
