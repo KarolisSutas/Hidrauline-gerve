@@ -42,8 +42,8 @@
             }
         ]
         </script>
-  <script type="module" crossorigin src="/assets/main-DYV0HCbo.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-CbyWydgL.css">
+  <script type="module" crossorigin src="/assets/main-JLCStZ1w.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-C0i6Lu9I.css">
 </head>
 
 <body class="min-h-dvh flex flex-col">
@@ -465,12 +465,14 @@
                     <div>
                         <label for="drawer-vardas" class="block text-xs font-medium text-red-200 mb-1.5">Vardas <span aria-hidden="true" class="text-red-300">*</span></label>
                         <input type="text" id="drawer-vardas" name="vardas" required
+                            autocomplete="name"
                             placeholder="pvz. Juozas Petraitis"
                             class="w-full px-3 py-2.5 text-sm rounded-lg bg-stone-800/50 border border-stone-600 text-white placeholder-stone-300 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors" />
                     </div>
                     <div>
                         <label for="drawer-email" class="block text-xs font-medium text-red-200 mb-1.5">El. paštas <span aria-hidden="true" class="text-red-300">*</span></label>
                         <input type="email" id="drawer-email" name="email" required
+                            autocomplete="email"
                             placeholder="jusu@pastas.lt"
                             class="w-full px-3 py-2.5 text-sm rounded-lg bg-stone-800/50 border border-stone-600 text-white placeholder-stone-300 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors" />
                     </div>
@@ -479,6 +481,7 @@
                         <div class="flex rounded-lg overflow-hidden border border-stone-600 focus-within:border-white focus-within:ring-1 focus-within:ring-white transition-colors">
                             <span class="px-3 flex items-center text-sm text-white bg-stone-800/50 border border-stone-600 select-none">+370</span>
                             <input type="tel" id="drawer-telefonas" name="telefonas"
+                                autocomplete="off"
                                 placeholder=""
                                 inputmode="numeric"
                                 pattern="[0-9\s]{7,11}"
@@ -488,12 +491,14 @@
                     <div>
                         <label for="drawer-tema" class="block text-xs font-medium text-red-200 mb-1.5">Tema <span aria-hidden="true" class="text-red-300">*</span></label>
                         <input type="text" id="drawer-tema" name="tema" required
+                            autocomplete="off"
                             placeholder="pvz. Lengvoji serija – užklausa"
                             class="w-full px-3 py-2.5 text-sm rounded-lg bg-stone-800/50 border border-stone-600 text-white placeholder-stone-300 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors" />
                     </div>
                     <div>
                         <label for="drawer-zinute" class="block text-xs font-medium text-red-200 mb-1.5">Žinutė <span aria-hidden="true" class="text-red-300">*</span></label>
                         <textarea id="drawer-zinute" name="zinute" required rows="4"
+                            autocomplete="off"
                             placeholder="Aprašykite savo poreikį..."
                             class="w-full px-3 py-2.5 text-sm rounded-lg bg-stone-800/50 border border-stone-600 text-white placeholder-stone-300 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors resize-none"></textarea>
                     </div>
