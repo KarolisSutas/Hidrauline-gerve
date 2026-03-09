@@ -180,7 +180,7 @@ footer{
   height: calc(100svh - 60px);
   overflow: hidden;
   /* Radial gradient fonas – pilkas centre, juodas pakraščiuose */
-  background: radial-gradient(ellipse at 65% 42%, #3d3d3d 0%, #1a1a1a 35%, #070707 100%);
+  background: radial-gradient(ellipse at 70% 42%, #3d3d3d 0%, #1a1a1a 35%, #070707 100%);
 }
 
 @media screen and (min-width: 768px) {
@@ -324,7 +324,7 @@ footer{
   content: '';
   position: absolute;
   inset: -30% -20%;
-  background: radial-gradient(ellipse at 50% 50%, rgba(153, 27, 27, 0.10) 0%, transparent 62%);
+  /* background: radial-gradient(ellipse at 50% 50%, rgba(153, 27, 27, 0.10) 0%, transparent 62%); */
   pointer-events: none;
 }
 
