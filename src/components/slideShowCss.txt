@@ -1,0 +1,229 @@
+
+/* ===== HTML ===== */
+
+        <!-- <section class="carousel-section">
+
+            <div class="slideshow-container"
+                role="region"
+                aria-label="Produktų skaidrių galerija">
+        
+                <div class="mySlides">
+                    <img src="/img/test-1.webp" alt="Lengvoji hidraulinė gervė – kompaktiška 3-8 tonų tempimo sistema" loading="eager">
+                    <div class="slide-content text-white p-5">
+                        <h2 class="slide-title text-red-800">Lengvoji serija</h2>
+                        <p class="slide-description">3-8 tonų tempimo galia</p>
+                        <a href="/produktai/lengvoji-serija" class="product-btn">Plačiau...</a>
+                    </div>
+                </div>
+        
+                <div class="mySlides">
+                    <img src="/img/test-2.webp" alt="Vidutinė hidraulinė gervė – universali 10-15 tonų traukimo gervė" loading="lazy">
+                    <div class="slide-content text-white p-5">
+                        <h2 class="slide-title text-red-800">Vidutinė serija</h2>
+                        <p class="slide-description">10-15 tonų tempimo galia</p>
+                        <a href="/produktai/vidutine-serija" class="product-btn">Plačiau...</a>
+                    </div>
+
+                </div>
+        
+                <div class="mySlides">
+                    <img src="/img/test-3.webp" alt="Sunkioji hidraulinė gervė – pramoninė 20-50 tonų tempimo gervė" loading="lazy">
+                    <div class="slide-content text-white p-5">
+                        <h2 class="slide-title text-red-800">Sunkioji serija</h2>
+                        <p class="slide-description">20-50 tonų tempimo galia</p>
+                        <a href="/produktai/sunkioji-serija" class="product-btn">Plačiau...</a>
+                    </div>
+
+                </div>
+        
+                <button class="slide-prev" aria-label="Ankstesnis">&#10094;</button>
+                <button class="slide-next" aria-label="Kitas">&#10095;</button>
+        
+                <div class="carousel-dots">
+                    <button class="carousel-dot" aria-label="Slide 1"></button>
+                    <button class="carousel-dot" aria-label="Slide 2"></button>
+                    <button class="carousel-dot" aria-label="Slide 3"></button>
+                </div>
+
+            </div>
+            
+        
+        
+        </section> -->
+
+
+/* ===== CSS ===== */
+
+/* ===== Slideshow(titulinis) ===== */
+
+.carousel-section {
+  padding-top: 60px;
+  display: block;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .carousel-section {
+    padding-top: 80px;
+  }
+}
+
+.slideshow-container {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-height: 100svh;
+  height: calc(100svh - 60px);
+  overflow: hidden;
+  background: #0e0e0e;
+}
+
+/* Visi slide'ai – absolute, vienas ant kito */
+.mySlides {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mySlides.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.mySlides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ==== Slide'ų turinys ==== */
+
+/* Gradient overlay – vietoj juodos dėžutės */
+.mySlides::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.slide-content {
+  position: absolute;
+  z-index: 3;
+  bottom: 12%;
+  left: 6%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slide-title {
+  font-size: clamp(24px, 3.5vw, 48px);
+  color: #ffffff;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.slide-description {
+  font-size: clamp(14px, 1.8vw, 20px);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.slide-content .product-btn {
+  align-self: flex-start;
+  margin-top: 8px;
+  background: #991b1b;
+  color: #ffffff;
+  border: none;
+  padding: 10px 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.slide-content .product-btn:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+/* Rodyklės */
+.slide-prev,
+.slide-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.35);
+  color: white;
+  border: none;
+  padding: 14px 12px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease;
+  z-index: 5;
+}
+
+.slide-prev { left: 0; border-radius: 0 4px 4px 0; }
+.slide-next { right: 0; border-radius: 4px 0 0 4px; }
+
+.slide-prev:hover,
+.slide-next:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* Taškai (dots) */
+.carousel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+.carousel-dot {
+  width: clamp(8px, 1vw, 12px);
+  height: clamp(8px, 1vw, 12px);
+  border-radius: 50%;
+  border: 2px solid #999;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.is-active,
+.carousel-dot:hover {
+  background: #e9e9e9;
+  border-color: #e9e9e9;
+}
+
+@media (max-width: 640px) {
+  .slide-prev,
+  .slide-next {
+    padding: 10px 8px;
+    font-size: 16px;
+  }
+
+}
