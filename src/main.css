@@ -1197,8 +1197,9 @@ footer{
 }
 
 .light-gray-top img{
+  padding-right: 5px;
   width: auto;
-  height: clamp(120px, 30svh, 220px);
+  height: clamp(160px, 30svh, 220px);
   object-fit: contain;
 }
 
