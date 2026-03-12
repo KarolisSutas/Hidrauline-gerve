@@ -316,6 +316,7 @@ footer{
 
 .slide-img-wrap--middle {
   justify-content: flex-end;
+  padding-right: 10%;
 }
 
 /* Subtilus raudonas ambient aplink nuotrauką */
