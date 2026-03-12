@@ -3,7 +3,6 @@
 // Honeypot + reCAPTCHA v3 + fetch() į backend
 // ============================================
 
-// reCAPTCHA v3 site key
 const RECAPTCHA_SITE_KEY = '6LfbwYEsAAAAAEO62dcUHCCWWDCWdAV3cR6BJI_h';
 
 /**
@@ -11,6 +10,7 @@ const RECAPTCHA_SITE_KEY = '6LfbwYEsAAAAAEO62dcUHCCWWDCWdAV3cR6BJI_h';
  */
 async function getRecaptchaToken() {
     if (!RECAPTCHA_SITE_KEY || typeof grecaptcha === 'undefined' || !grecaptcha?.enterprise?.ready) {
+        console.warn('reCAPTCHA dar neužsikrovė');
         return '';
     }
 
@@ -25,9 +25,6 @@ async function getRecaptchaToken() {
 
 /**
  * Inicializuoti formą
- * @param {string} formId - formos HTML id
- * @param {string} successId - sėkmės pranešimo HTML id
- * @param {string} errorId - klaidos pranešimo HTML id
  */
 export function initForm(formId, successId, errorId) {
     const form = document.getElementById(formId);
@@ -38,6 +35,12 @@ export function initForm(formId, successId, errorId) {
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        // Patikrinti ar reCAPTCHA užsikrovė
+        if (typeof grecaptcha === 'undefined' || !grecaptcha?.enterprise) {
+            showError(error, 'Apsaugos patikra dar kraunasi. Palaukite kelias sekundes ir bandykite dar kartą.');
+            return;
+        }
 
         // Validacija
         if (!form.checkValidity()) {
@@ -62,10 +65,8 @@ export function initForm(formId, successId, errorId) {
         error?.classList.add('hidden');
 
         try {
-            // Gauti reCAPTCHA token
             const recaptchaToken = await getRecaptchaToken();
 
-            // Surinkti duomenis
             const formData = new FormData(form);
             const data = {
                 vardas: formData.get('vardas'),
@@ -73,11 +74,10 @@ export function initForm(formId, successId, errorId) {
                 email: formData.get('email'),
                 tema: formData.get('tema'),
                 zinute: formData.get('zinute'),
-                website: formData.get('website'), // honeypot
+                website: formData.get('website'),
                 recaptchaToken,
             };
 
-            // Siųsti į backend
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -87,12 +87,10 @@ export function initForm(formId, successId, errorId) {
             const result = await response.json();
 
             if (response.ok && result.success) {
-                // Sėkmė
                 form.reset();
                 success?.classList.remove('hidden');
                 setTimeout(() => success?.classList.add('hidden'), 8000);
             } else {
-                // Serveris grąžino klaidą
                 let message = result.message || 'Nepavyko išsiųsti. Pabandykite vėliau.';
 
                 if (result.code === 'recaptcha_missing' || result.code === 'recaptcha_failed') {
@@ -103,11 +101,9 @@ export function initForm(formId, successId, errorId) {
             }
 
         } catch (err) {
-            // Tinklo klaida
             console.error('Formos klaida:', err);
             showError(error, 'Ryšio klaida. Patikrinkite internetą arba susisiekite telefonu.');
         } finally {
-            // Grąžinti mygtuką
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalBtnHTML;
         }
@@ -120,4 +116,3 @@ function showError(errorEl, message) {
     errorEl.classList.remove('hidden');
     setTimeout(() => errorEl.classList.add('hidden'), 8000);
 }
-

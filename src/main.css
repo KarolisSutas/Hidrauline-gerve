@@ -25,6 +25,10 @@ body{
   color: rgb(233, 233, 233);
 }
 
+.grecaptcha-badge {
+  z-index: 9999 !important;
+}
+
 nav{
   font-optical-sizing: auto;
   font-weight: 800;

@@ -1,3 +1,13 @@
+let recaptchaLoaded = false;
+
+function loadRecaptcha() {
+    if (recaptchaLoaded) return;
+    recaptchaLoaded = true;
+
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/enterprise.js?render=6LfbwYEsAAAAAEO62dcUHCCWWDCWdAV3cR6BJI_h';
+    document.head.appendChild(script);
+}
 
 export function initDrawer() {
     const drawer   = document.getElementById('contact-drawer');
@@ -6,15 +16,13 @@ export function initDrawer() {
 
     if (!drawer) return;
 
-    // Visi mygtukai/nuorodos, kurie atidaro drawer
     const triggers = document.querySelectorAll('[data-open-drawer]');
-
-    // Navbar (burger menu) – uždarysime kai atidaromas drawer
     const navbar    = document.getElementById('navbar-default');
     const burgerBtn = document.querySelector('[data-collapse-toggle="navbar-default"]');
 
     function openDrawer() {
-        // Uždaryti burger menu jei atidarytas (mobiliuose)
+        loadRecaptcha();
+
         if (navbar && !navbar.classList.contains('hidden')) {
             navbar.classList.add('hidden');
             if (burgerBtn) burgerBtn.setAttribute('aria-expanded', 'false');
@@ -27,8 +35,6 @@ export function initDrawer() {
         backdrop.classList.add('opacity-100');
 
         document.body.style.overflow = 'hidden';
-
-        // Fokusas ant uždarymo mygtuko
         closeBtn.focus();
     }
 
@@ -40,38 +46,28 @@ export function initDrawer() {
 
         document.body.style.overflow = '';
 
-        // Grąžinti fokusą prie trigger mygtuko (jei yra)
         const lastTrigger = document.activeElement?._drawerTrigger;
         if (lastTrigger) lastTrigger.focus();
 
-        // inert grąžiname po animacijos pabaigos
         drawer.addEventListener('transitionend', () => {
             drawer.setAttribute('inert', '');
         }, { once: true });
     }
 
-    // Eventai
     triggers.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
-            closeBtn._drawerTrigger = trigger; // išsaugom šaltinį fokusui
+            closeBtn._drawerTrigger = trigger;
             openDrawer();
         });
     });
 
     closeBtn.addEventListener('click', closeDrawer);
-
     backdrop.addEventListener('click', closeDrawer);
 
-    // Uždaryti per Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && !drawer.classList.contains('translate-x-full')) {
             closeDrawer();
         }
     });
-
-    // FORMOS LOGIKA PERKELTA Į form.js
-    // Drawer forma inicializuojama per:
-    // initForm('contact-form', 'form-success', 'form-error')
 }
-
