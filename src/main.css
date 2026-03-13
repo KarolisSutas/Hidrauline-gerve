@@ -1198,13 +1198,27 @@ footer{
   grid-row: 1;
   min-height: 20svh;
   background: linear-gradient(40deg, #f3f2f0 0%, #cfcac4 55%, #9e9a95 85%);
+  padding: 20px 0 20px 0;
 }
 
 .light-gray-top img{
+  display: block;
   padding-right: 5px;
   width: auto;
-  height: clamp(160px, 30svh, 220px);
+  height: clamp(120px, 30svh, 220px);
   object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+  .light-gray-top img {
+    height: clamp(100px, 25svh, 140px);
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .light-gray-top img {
+    height: clamp(80px, 25svh, 120px);
+  }
 }
 
 .light-gray-bottom{
