@@ -24,7 +24,7 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="lt_LT">
 
-
+<!-- JSON-LD: BreadcrumbList + Product + FAQPage -->
     <script type="application/ld+json">
     [
         {
@@ -114,8 +114,9 @@
         }
     ]
     </script>
-  <script type="module" crossorigin src="/assets/main-CVfWBx-e.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/main-CSll9p0_.css">
+  <script type="module" crossorigin src="/assets/main-CVfWBx-e.js"></script>
+  
 </head>
 
 <body class="min-h-dvh flex flex-col">
@@ -198,12 +199,12 @@
                                     border-l-2 border-b-0 md:border-b-2 md:border-l-0 border-transparent hover:border-red-800 hover:text-white 
                                     transition-colors duration-200 md:p-0">
                                     Produktai
-                                    
+                                    <!-- Desktop: SVG inside link for hover -->
                                     <svg class="w-4 h-4 ml-1 transition-transform duration-200 hidden md:inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                                     </svg>
                                 </a>
-                                
+                                <!-- Mobile: separate toggle button -->
                                 <button type="button" id="nav-dropdown-arrow-btn" aria-label="Produktų meniu"
                                     class="md:hidden p-2 text-white/80 hover:text-white transition-colors">
                                     <svg class="w-4 h-4 transition-transform duration-200" id="nav-dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -211,7 +212,7 @@
                                     </svg>
                                 </button>
                             </div>
-                            
+                            <!-- Desktop dropdown -->
                             <ul id="nav-dropdown-menu" class="nav-dropdown-menu">
                                 <li>
                                     <a href="/produktai/lengvoji-serija" class="nav-dropdown-item">
@@ -229,7 +230,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            
+                            <!-- Mobile dropdown (inside burger menu) -->
                             <ul id="nav-dropdown-mobile" class="nav-dropdown-mobile hidden">
                                 <li>
                                     <a href="/produktai/lengvoji-serija" class="nav-dropdown-mobile-item">
@@ -289,10 +290,10 @@
 
         <div class="section-divider" aria-hidden="true">
             <div class="divider-container">
-                
+                <!-- Kairė linija -->
                 <div class="divider-line left-line"></div>
                 
-                
+                <!-- Gervės ikona -->
                 <div class="divider-icon">
                     <svg id="fi_2260219" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
                         <path d="m304 255.998c8.836 0 16-7.163 16-16v-96c0-8.837-7.164-16-16-16s-16 7.163-16 16v96c0 8.837 7.164 16 16 16z"></path>
@@ -305,7 +306,7 @@
                     </svg>
                 </div>
                 
-                
+                <!-- Dešinė linija -->
                 <div class="divider-line right-line"></div>
             </div>
         </div>
@@ -519,7 +520,7 @@
                     <h2 class="series-title mb-[clamp(1rem,2vw,1.5rem)]">Galerija</h2>
                 </div>
         
-                
+                <!-- Didelė nuotrauka -->
                 <button type="button"
                     class="gallery-main group relative mx-auto block w-full max-w-4xl rounded-2xl overflow-hidden"
                     aria-label="Atidaryti galeriją">
@@ -534,7 +535,7 @@
                     </div>
                 </button>
         
-                
+                <!-- Thumbnail'ai -->
                 <div class="mt-6 relative">
                     <button type="button" class="gallery-nav gallery-prev" aria-label="Slinkti kairėn">‹</button>
         
@@ -566,7 +567,7 @@
                 </div>
         </section>
 
-                
+                <!-- FAQ sekcija -->
         <section class="py-16 px-6 bg-stone-50">
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-2xl font-semibold text-stone-900 mb-8">Dažniausiai užduodami klausimai</h2>
@@ -673,12 +674,12 @@
         </div>
     </footer>
 
-    
+    <!-- Drawer backdrop -->
     <div id="drawer-backdrop"
         class="fixed inset-0 bg-black/40 z-40 opacity-0 pointer-events-none transition-opacity duration-300"
         aria-hidden="true"></div>
 
-    
+    <!-- Kontaktų drawer -->
     <div id="contact-drawer"
         class="fixed top-0 right-0 z-50 h-screen overflow-y-auto bg-neutral-700 w-full sm:w-90 md:w-110 translate-x-full transition-transform duration-300 ease-in-out"
         role="dialog" aria-modal="true" aria-labelledby="drawer-title" inert>
@@ -702,7 +703,7 @@
 
         <div class="px-6 py-6 space-y-8">
 
-            
+            <!-- Kontaktinė informacija -->
             <div>
                 <h3 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Kontaktai</h3>
                 <ul class="space-y-3 text-sm text-white">
@@ -722,14 +723,14 @@
                     </li>
                 </ul>
 
-                
+                <!-- Įmonės duomenys -->
                 <div class="mt-5 pt-4 border-t border-red-700 space-y-1.5 text-xs text-white">
                     <p><span class="text-white">Įmonės kodas:</span> 305715513</p>
                     <p><span class="text-white">PVM kodas:</span> LT100014002319</p>
                 </div>
             </div>
 
-            
+            <!-- Forma -->
             <div>
                 <h3 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Siųsti užklausą</h3>
                 <form id="contact-form" novalidate class="space-y-4">
@@ -777,7 +778,7 @@
                         <input type="checkbox" class="accent-red-400" required> Sutinku su 
                         <a href="/privatumas" class="text-red-200 hover:text-red-500">privatumo politika</a>
                     </label>
-                    
+                    <!-- Honeypot -->
                     <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;">
                         <input type="text" name="website" tabindex="-1" autocomplete="off" />
                     </div>

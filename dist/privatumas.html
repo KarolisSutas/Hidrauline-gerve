@@ -23,8 +23,9 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="lt_LT">
 
-  <script type="module" crossorigin src="/assets/main-CVfWBx-e.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/main-CSll9p0_.css">
+  <script type="module" crossorigin src="/assets/main-CVfWBx-e.js"></script>
+  
 </head>
 
 <body class="min-h-dvh flex flex-col bg-stone-50">
@@ -108,12 +109,12 @@
                                     border-l-2 border-b-0 md:border-b-2 md:border-l-0 border-transparent hover:border-red-800 hover:text-white 
                                     transition-colors duration-200 md:p-0">
                                     Produktai
-                                    
+                                    <!-- Desktop: SVG inside link for hover -->
                                     <svg class="w-4 h-4 ml-1 transition-transform duration-200 hidden md:inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                                     </svg>
                                 </a>
-                                
+                                <!-- Mobile: separate toggle button -->
                                 <button type="button" id="nav-dropdown-arrow-btn" aria-label="Produktų meniu"
                                     class="md:hidden p-2 text-white/80 hover:text-white transition-colors">
                                     <svg class="w-4 h-4 transition-transform duration-200" id="nav-dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -121,7 +122,7 @@
                                     </svg>
                                 </button>
                             </div>
-                            
+                            <!-- Desktop dropdown -->
                             <ul id="nav-dropdown-menu" class="nav-dropdown-menu">
                                 <li>
                                     <a href="/produktai/lengvoji-serija" class="nav-dropdown-item">
@@ -139,7 +140,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            
+                            <!-- Mobile dropdown (inside burger menu) -->
                             <ul id="nav-dropdown-mobile" class="nav-dropdown-mobile hidden">
                                 <li>
                                     <a href="/produktai/lengvoji-serija" class="nav-dropdown-mobile-item">
@@ -175,7 +176,7 @@
 
     <main class="flex-1 pt-10">
 
-        
+        <!-- ===== HERO JUOSTA ===== -->
         <section class="bg-linear-to-b from-[#1a1a1a] to-[#2a2a2a] pt-6 md:pt-9">
             <div class="max-w-4xl mx-auto px-6 py-12 md:py-16">
                 <div class="flex items-center gap-3 mb-3">
@@ -191,17 +192,17 @@
             </div>
         </section>
 
-        
+        <!-- ===== TURINYS ===== -->
         <section class="max-w-4xl mx-auto px-6 py-12 md:py-16">
 
-            
+            <!-- Įvadas -->
             <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 md:p-8 mb-6">
                 <p class="text-[clamp(14px,1vw,16px)] text-neutral-700 leading-relaxed" style="font-family: var(--font-body);">
                     Jugila, UAB – veikianti hidraulinės gervės prekės ženklu, gerbia jūsų privatumą ir įsipareigoja saugoti jūsų asmens duomenis. Ši privatumo politika paaiškina, kokius duomenis renkame per šią svetainę, kaip juos naudojame ir kokios yra jūsų teisės pagal 2016 m. balandžio 27 d. Europos Parlamento ir Tarybos reglamentą (ES) 2016/679 (BDAR).
                 </p>
             </div>
 
-            
+            <!-- 1. Duomenų valdytojas -->
             <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 md:p-8 mb-6">
                 <div class="flex items-start gap-4 mb-5">
                     <div class="w-8 h-8 rounded-lg bg-red-800 flex items-center justify-center shrink-0 mt-0.5">
@@ -223,7 +224,7 @@
                 </div>
             </div>
 
-            
+            <!-- 2. Kokie duomenys renkami -->
             <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 md:p-8 mb-6">
                 <div class="flex items-start gap-4 mb-5">
                     <div class="w-8 h-8 rounded-lg bg-red-800 flex items-center justify-center shrink-0 mt-0.5">
@@ -267,7 +268,7 @@
                 </div>
             </div>
 
-            
+            <!-- 3. Duomenų tvarkymo tikslas ir teisinis pagrindas -->
             <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 md:p-8 mb-6">
                 <div class="flex items-start gap-4 mb-5">
                     <div class="w-8 h-8 rounded-lg bg-red-800 flex items-center justify-center shrink-0 mt-0.5">
@@ -288,7 +289,7 @@
                 </div>
             </div>
 
-            
+            <!-- 4. Duomenų saugojimo laikotarpis -->
             <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 md:p-8 mb-6">
                 <div class="flex items-start gap-4 mb-5">
                     <div class="w-8 h-8 rounded-lg bg-red-800 flex items-center justify-center shrink-0 mt-0.5">
@@ -303,7 +304,7 @@
                 </div>
             </div>
 
-            
+            <!-- 5. Duomenų perdavimas trečiosioms šalims -->
             <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 md:p-8 mb-6">
                 <div class="flex items-start gap-4 mb-5">
                     <div class="w-8 h-8 rounded-lg bg-red-800 flex items-center justify-center shrink-0 mt-0.5">
@@ -341,7 +342,7 @@
                 </div>
             </div>
 
-            
+            <!-- 6. Slapukai -->
             <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 md:p-8 mb-6">
                 <div class="flex items-start gap-4 mb-5">
                     <div class="w-8 h-8 rounded-lg bg-red-800 flex items-center justify-center shrink-0 mt-0.5">
@@ -356,7 +357,7 @@
                 </div>
             </div>
 
-            
+            <!-- 7. Jūsų teisės -->
             <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 md:p-8 mb-6">
                 <div class="flex items-start gap-4 mb-5">
                     <div class="w-8 h-8 rounded-lg bg-red-800 flex items-center justify-center shrink-0 mt-0.5">
@@ -425,7 +426,7 @@
                 </div>
             </div>
 
-            
+            <!-- 8. Politikos atnaujinimai -->
             <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 md:p-8 mb-6">
                 <div class="flex items-start gap-4 mb-5">
                     <div class="w-8 h-8 rounded-lg bg-red-800 flex items-center justify-center shrink-0 mt-0.5">
@@ -440,7 +441,7 @@
                 </div>
             </div>
 
-            
+            <!-- Kontaktų CTA -->
             <div class="bg-linear-to-b from-[#1a1a1a] to-[#2a2a2a] rounded-2xl p-6 md:p-8 text-white">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div>
@@ -487,13 +488,13 @@
         </div>
     </footer>
 
-    
+    <!-- Drawer backdrop -->
     <div id="drawer-backdrop"
         class="fixed inset-0 bg-black/40 z-40 opacity-0 pointer-events-none transition-opacity duration-300"
         aria-hidden="true">
     </div>
 
-    
+    <!-- Kontaktų drawer -->
     <div id="contact-drawer"
         class="fixed top-0 right-0 z-50 h-screen overflow-y-auto bg-neutral-700 w-full sm:w-90 md:w-110 translate-x-full transition-transform duration-300 ease-in-out"
         role="dialog" aria-modal="true" aria-labelledby="drawer-title" inert>
@@ -581,7 +582,7 @@
                         <input type="checkbox" class="accent-red-400" required> Sutinku su 
                         <a href="/privatumas" class="text-red-200 hover:text-red-500">privatumo politika</a>
                     </label>
-                    
+                    <!-- Honeypot -->
                     <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;">
                         <input type="text" name="website" tabindex="-1" autocomplete="off" />
                     </div>

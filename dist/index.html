@@ -24,7 +24,7 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="lt_LT">
 
-
+<!-- JSON-LD: Organization + WebSite + WebPage -->
 <script type="application/ld+json">
     [
         {
@@ -84,8 +84,9 @@
         }
     ]
     </script>
-  <script type="module" crossorigin src="/assets/main-CVfWBx-e.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/main-CSll9p0_.css">
+  <script type="module" crossorigin src="/assets/main-CVfWBx-e.js"></script>
+  
 </head>
 
 <body class="min-h-dvh flex flex-col">
@@ -168,12 +169,12 @@
                                     border-l-2 border-b-0 md:border-b-2 md:border-l-0 border-transparent hover:border-red-800 hover:text-white 
                                     transition-colors duration-200 md:p-0">
                                     Produktai
-                                    
+                                    <!-- Desktop: SVG inside link for hover -->
                                     <svg class="w-4 h-4 ml-1 transition-transform duration-200 hidden md:inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                                     </svg>
                                 </a>
-                                
+                                <!-- Mobile: separate toggle button -->
                                 <button type="button" id="nav-dropdown-arrow-btn" aria-label="Produktų meniu"
                                     class="md:hidden p-2 text-white/80 hover:text-white transition-colors">
                                     <svg class="w-4 h-4 transition-transform duration-200" id="nav-dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,7 +182,7 @@
                                     </svg>
                                 </button>
                             </div>
-                            
+                            <!-- Desktop dropdown -->
                             <ul id="nav-dropdown-menu" class="nav-dropdown-menu">
                                 <li>
                                     <a href="/produktai/lengvoji-serija" class="nav-dropdown-item">
@@ -199,7 +200,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            
+                            <!-- Mobile dropdown (inside burger menu) -->
                             <ul id="nav-dropdown-mobile" class="nav-dropdown-mobile hidden">
                                 <li>
                                     <a href="/produktai/lengvoji-serija" class="nav-dropdown-mobile-item">
@@ -241,7 +242,7 @@
                 role="region"
                 aria-label="Produktų skaidrių galerija">
 
-                
+                <!-- Slide 1 – Lengvoji -->
                 <div class="mySlides">
                     <div class="slide-inner">
                         <div class="slide-text">
@@ -266,7 +267,7 @@
                     <div class="slide-series-num" aria-hidden="true">01</div>
                 </div>
 
-                
+                <!-- Slide 2 – Vidutinė -->
                 <div class="mySlides">
                     <div class="slide-inner">
                         <div class="slide-text">
@@ -290,7 +291,7 @@
                     <div class="slide-series-num" aria-hidden="true">02</div>
                 </div>
 
-                
+                <!-- Slide 3 – Sunkioji -->
                 <div class="mySlides">
                     <div class="slide-inner">
                         <div class="slide-text">
@@ -342,10 +343,10 @@
 
         <div class="section-divider" aria-hidden="true">
             <div class="divider-container">
-                
+                <!-- Kairė linija -->
                 <div class="divider-line left-line"></div>
                 
-                
+                <!-- Gervės ikona -->
                 <div class="divider-icon">
                     <svg id="fi_2260219" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
                         <path d="m304 255.998c8.836 0 16-7.163 16-16v-96c0-8.837-7.164-16-16-16s-16 7.163-16 16v96c0 8.837 7.164 16 16 16z"></path>
@@ -358,7 +359,7 @@
                     </svg>
                 </div>
                 
-                
+                <!-- Dešinė linija -->
                 <div class="divider-line right-line"></div>
             </div>
         </div>
