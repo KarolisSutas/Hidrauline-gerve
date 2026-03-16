@@ -9,7 +9,7 @@ import { initForm } from './components/form';
 import { initCardScrollAnimation } from './components/cardScrollAnimation';
 import { initNavLink } from './components/navLink';
 
-// Navbar mobile collapse (replaces Flowbite)
+// Navbar mobile collapse
 function initNavCollapse() {
     const btn = document.querySelector('[aria-controls="navbar-default"]');
     const nav = document.getElementById('navbar-default');
