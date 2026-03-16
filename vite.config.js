@@ -1,6 +1,30 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
+// Plugin: perkelia <link rel="stylesheet"> prieš <script> head bloke
+function cssBeforeScript() {
+    return {
+        name: 'css-before-script',
+        enforce: 'post',
+        transformIndexHtml(html) {
+            // Surasti CSS link tagą
+            const cssMatch = html.match(/<link rel="stylesheet"[^>]*href="\/assets\/[^"]*\.css"[^>]*>/);
+            if (!cssMatch) return html;
+
+            // Pašalinti iš dabartinės vietos
+            html = html.replace(cssMatch[0], '');
+
+            // Įterpti prieš pirmą <script> head bloke
+            html = html.replace(
+                /(<script type="module"[^>]*src="\/assets\/[^"]*\.js"[^>]*>)/,
+                cssMatch[0] + '\n  $1'
+            );
+
+            return html;
+        }
+    };
+}
+
 export default defineConfig({
     build: {
         rollupOptions: {
@@ -21,12 +45,6 @@ export default defineConfig({
     },
     plugins: [
         {
-            name: 'remove-html-comments',
-            transformIndexHtml(html) {
-                return html.replace(/<!--[\s\S]*?-->/g, '');
-            },
-        },
-        {
             name: 'html-rewrite',
             configureServer(server) {
                 server.middlewares.use((req, res, next) => {
@@ -46,5 +64,6 @@ export default defineConfig({
                 });
             },
         },
+        cssBeforeScript(),
     ],
 });
