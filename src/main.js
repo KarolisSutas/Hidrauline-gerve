@@ -1,4 +1,3 @@
-import './main.css';
 import 'flowbite';
 
 import { initCountUp } from './components/countUp';
