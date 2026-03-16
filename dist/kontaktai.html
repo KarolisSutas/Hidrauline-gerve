@@ -26,23 +26,58 @@
     
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfbwYEsAAAAAEO62dcUHCCWWDCWdAV3cR6BJI_h" async defer></script>
 
-    
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Hidraulinės gervės",
-        "legalName": "Jugila, UAB",
-        "telephone": "+37062514383",
-        "email": "info@aukstaitijosvilktis.lt",
-        "url": "https://hidraulinesgerves.lt",
-        "openingHours": "Mo-Fr 08:00-17:00",
-        "areaServed": ["Lietuva", "Baltijos šalys", "Europa"],
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "LT"
+
+<script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Pradžia", "item": "https://hidraulinesgerves.lt/" },
+                { "@type": "ListItem", "position": 2, "name": "Kontaktai", "item": "https://hidraulinesgerves.lt/kontaktai" }
+            ]
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Hidraulinės gervės",
+            "legalName": "Jugila, UAB",
+            "telephone": "+37062514383",
+            "email": "info@aukstaitijosvilktis.lt",
+            "url": "https://hidraulinesgerves.lt",
+            "openingHours": "Mo-Fr 08:00-17:00",
+            "areaServed": ["Lietuva", "Latvija", "Estija", "Lenkija", "Vokietija", "Europa"],
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "LT"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+37062514383",
+                "email": "info@aukstaitijosvilktis.lt",
+                "contactType": "sales",
+                "availableLanguage": ["Lithuanian", "English"],
+                "hoursAvailable": {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                    "opens": "08:00",
+                    "closes": "17:00"
+                }
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Kontaktai – Hidraulinės gervės",
+            "url": "https://hidraulinesgerves.lt/kontaktai",
+            "description": "Susisiekite dėl hidraulinių gervių parinkimo, kainos ir pristatymo. Atsakome per 24 val. darbo dienomis.",
+            "inLanguage": "lt",
+            "isPartOf": {
+                "@type": "WebSite",
+                "url": "https://hidraulinesgerves.lt"
+            }
         }
-    }
+    ]
     </script>
   <script type="module" crossorigin src="/assets/main-CVfWBx-e.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/main-CSll9p0_.css">
