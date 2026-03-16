@@ -19,29 +19,6 @@ function cssBeforeScript() {
     };
 }
 
-// Plugin: critical CSS inlining su critters
-function criticalCss() {
-    let Critters;
-    return {
-        name: 'critical-css',
-        enforce: 'post',
-        apply: 'build',
-        async configResolved() {
-            Critters = (await import('critters')).default;
-        },
-        async transformIndexHtml(html, ctx) {
-            const critters = new Critters({
-                path: resolve(__dirname, 'dist'),
-                preload: 'swap',
-                inlineFonts: false,
-                compress: true,
-                pruneSource: false,
-            });
-            return await critters.process(html);
-        }
-    };
-}
-
 export default defineConfig({
     build: {
         rollupOptions: {
@@ -82,6 +59,5 @@ export default defineConfig({
             },
         },
         cssBeforeScript(),
-        criticalCss(),
     ],
 });
