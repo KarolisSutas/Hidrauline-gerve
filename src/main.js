@@ -22,3 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initCardScrollAnimation();
     initNavLink();
 });
+
+// FAQ akordeonas
+document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling;
+        const icon = btn.querySelector('.faq-icon');
+        const isOpen = !answer.classList.contains('hidden');
+
+        answer.classList.toggle('hidden', isOpen);
+        icon.classList.toggle('rotate-180', !isOpen);
+        btn.setAttribute('aria-expanded', !isOpen);
+    });
+});

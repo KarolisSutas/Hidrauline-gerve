@@ -26,8 +26,8 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="lt_LT">
 
-    <!-- JSON-LD: Product + BreadcrumbList -->
-    <script type="application/ld+json">
+<!-- JSON-LD: BreadcrumbList + Product + FAQPage -->
+<script type="application/ld+json">
     [
         {
             "@context": "https://schema.org",
@@ -45,12 +45,59 @@
             "description": "Galingiausia Europos gamybos hidraulinė tempimo gervė su 15–50 tonų traukimo galia. Skirta pramoniniams, statybos ir transporto sektoriams.",
             "brand": { "@type": "Brand", "name": "Hidraulinės gervės" },
             "category": "Hidraulinės gervės",
+            "manufacturer": { "@type": "Organization", "name": "Europos gamintojas" },
             "additionalProperty": [
                 { "@type": "PropertyValue", "name": "Tempimo galia", "value": "15–50 t" },
                 { "@type": "PropertyValue", "name": "Svoris", "value": "nuo 350 kg" },
                 { "@type": "PropertyValue", "name": "Troso ilgis", "value": "35 m" },
                 { "@type": "PropertyValue", "name": "Troso diametras", "value": "Ø18 mm" },
                 { "@type": "PropertyValue", "name": "Vyniojimo greitis", "value": "4.8 m/min" }
+            ]
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Kam skirta sunkioji hidraulinė gervė (15–50 t)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Sunkioji serija (15–50 t) skirta pramoniniam naudojimui: sunkiajai miško technikai, statybinėms mašinoms, laivų ir uostų įrangai bei kitoms sistemoms, kur reikalinga didelė ir patikima traukimo galia ilgalaikėje eksploatacijoje."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Kokia maksimali traukimo galia pasiekiama su sunkiąja serija?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Sunkiosios serijos gervės pasiekia iki 50 tonų traukimo galią. Visos gervės CE ir ISO sertifikuotos, garantuojant saugą ir patikimumą net esant maksimaliai apkrovai."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Koks hidraulinis slėgis ir srautas reikalingas sunkiajai gervei?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Sunkiosios serijos gervėms reikalingas hidraulinis slėgis 200–250 bar ir srautas nuo 80 l/min. Tikslūs parametrai priklauso nuo modelio — techninę specifikaciją pateikiame su kiekvienu pasiūlymu."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Ar galima užsisakyti sunkiąją gervę su individualia konfigūracija?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Taip. Sunkiosios serijos gervės gali būti konfigūruojamos pagal kliento poreikius — troso ilgis, tvirtinimo sistema, valdymo tipas (laidinis arba belaidis pultas). Susisiekite su mumis dėl individualaus pasiūlymo."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Ar sunkioji gervė tinka darbui žemoje temperatūroje?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Taip. Europos gamybos gervės suprojektuotos darbui Šiaurės Europos klimato sąlygomis, įskaitant žemas temperatūras iki -30°C. Hidraulinė sistema veikia patikimai šaltu oru, jei naudojama tinkama hidraulinė alyva."
+                    }
+                }
             ]
         }
     ]
@@ -515,6 +562,87 @@
                         <div class="gallery-modal-caption"></div>
                     </div>
                 </div>
+        </section>
+
+            <!-- FAQ sekcija -->
+        <section class="py-16 px-6 bg-stone-50">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl font-semibold text-stone-900 mb-8">Dažniausiai užduodami klausimai</h2>
+
+                <div class="space-y-3">
+
+                    <div class="border border-stone-200 rounded-lg overflow-hidden">
+                        <button type="button"
+                            class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left text-stone-900 font-medium hover:bg-stone-100 transition-colors"
+                            aria-expanded="false">
+                            <span>Kam skirta sunkioji hidraulinė gervė (15–50 t)?</span>
+                            <svg class="faq-icon w-5 h-5 shrink-0 text-red-800 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-4 text-sm text-stone-600 leading-relaxed">
+                            Sunkioji serija (15–50 t) skirta pramoniniam naudojimui: sunkiajai miško technikai, statybinėms mašinoms, laivų ir uostų įrangai bei kitoms sistemoms, kur reikalinga didelė ir patikima traukimo galia ilgalaikėje eksploatacijoje.
+                        </div>
+                    </div>
+
+                    <div class="border border-stone-200 rounded-lg overflow-hidden">
+                        <button type="button"
+                            class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left text-stone-900 font-medium hover:bg-stone-100 transition-colors"
+                            aria-expanded="false">
+                            <span>Kokia maksimali traukimo galia pasiekiama su sunkiąja serija?</span>
+                            <svg class="faq-icon w-5 h-5 shrink-0 text-red-800 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-4 text-sm text-stone-600 leading-relaxed">
+                            Sunkiosios serijos gervės pasiekia iki 50 tonų traukimo galią. Visos gervės CE ir ISO sertifikuotos, garantuojant saugą ir patikimumą net esant maksimaliai apkrovai.
+                        </div>
+                    </div>
+
+                    <div class="border border-stone-200 rounded-lg overflow-hidden">
+                        <button type="button"
+                            class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left text-stone-900 font-medium hover:bg-stone-100 transition-colors"
+                            aria-expanded="false">
+                            <span>Koks hidraulinis slėgis ir srautas reikalingas sunkiajai gervei?</span>
+                            <svg class="faq-icon w-5 h-5 shrink-0 text-red-800 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-4 text-sm text-stone-600 leading-relaxed">
+                            Sunkiosios serijos gervėms reikalingas hidraulinis slėgis 200–250 bar ir srautas nuo 80 l/min. Tikslūs parametrai priklauso nuo modelio — techninę specifikaciją pateikiame su kiekvienu pasiūlymu.
+                        </div>
+                    </div>
+
+                    <div class="border border-stone-200 rounded-lg overflow-hidden">
+                        <button type="button"
+                            class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left text-stone-900 font-medium hover:bg-stone-100 transition-colors"
+                            aria-expanded="false">
+                            <span>Ar galima užsisakyti sunkiąją gervę su individualia konfigūracija?</span>
+                            <svg class="faq-icon w-5 h-5 shrink-0 text-red-800 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-4 text-sm text-stone-600 leading-relaxed">
+                            Taip. Sunkiosios serijos gervės gali būti konfigūruojamos pagal kliento poreikius — troso ilgis, tvirtinimo sistema, valdymo tipas (laidinis arba belaidis pultas). Susisiekite su mumis dėl individualaus pasiūlymo.
+                        </div>
+                    </div>
+
+                    <div class="border border-stone-200 rounded-lg overflow-hidden">
+                        <button type="button"
+                            class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left text-stone-900 font-medium hover:bg-stone-100 transition-colors"
+                            aria-expanded="false">
+                            <span>Ar sunkioji gervė tinka darbui žemoje temperatūroje?</span>
+                            <svg class="faq-icon w-5 h-5 shrink-0 text-red-800 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden px-5 pb-4 text-sm text-stone-600 leading-relaxed">
+                            Taip. Europos gamybos gervės suprojektuotos darbui Šiaurės Europos klimato sąlygomis, įskaitant žemas temperatūras iki -30°C. Hidraulinė sistema veikia patikimai šaltu oru, jei naudojama tinkama hidraulinė alyva.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </section>
     </main>
 

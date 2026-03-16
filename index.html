@@ -26,26 +26,65 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="lt_LT">
 
-    <!-- JSON-LD: Organization + WebSite -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Hidraulinės gervės",
-        "legalName": "Jugila, UAB",
-        "url": "https://hidraulinesgerves.lt",
-        "telephone": "+37062514383",
-        "email": "info@aukstaitijosvilktis.lt",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "LT"
+<!-- JSON-LD: Organization + WebSite + WebPage -->
+<script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Hidraulinės gervės",
+            "legalName": "Jugila, UAB",
+            "url": "https://hidraulinesgerves.lt",
+            "telephone": "+37062514383",
+            "email": "info@aukstaitijosvilktis.lt",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "LT"
+            },
+            "areaServed": {
+                "@type": "Place",
+                "name": "Europa"
+            },
+            "description": "Europos gamybos hidraulinių tempimo gervių tiekėjas. CE ir ISO sertifikuoti produktai nuo 3 iki 50 tonų. Pristatymas į visą Europą per 2–5 darbo dienas.",
+            "knowsAbout": [
+                "hidraulinės gervės",
+                "tempimo gervės miško technikai",
+                "hidraulinės gervės sunkvežimiams",
+                "hidraulinės gervės traktoriams",
+                "CE sertifikuota tempimo įranga",
+                "pramoninės hidraulinės sistemos"
+            ]
         },
-        "areaServed": {
-            "@type": "Place",
-            "name": "Europa"
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Hidraulinės gervės",
+            "url": "https://hidraulinesgerves.lt",
+            "description": "Europos gamybos hidraulinės tempimo gervės nuo 3 iki 50 tonų. CE ir ISO sertifikuotos.",
+            "inLanguage": "lt",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Jugila, UAB"
+            }
         },
-        "description": "Europos gamybos hidraulinių tempimo gervių tiekėjas. CE ir ISO sertifikuoti produktai nuo 3 iki 50 tonų."
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Hidraulinės gervės 3–50 t · Europos gamyba, CE/ISO",
+            "url": "https://hidraulinesgerves.lt/",
+            "description": "Europos gamybos hidraulinės tempimo gervės nuo 3 iki 50 tonų. CE ir ISO sertifikuotos gervės miško technikai, sunkvežimiams ir traktoriams.",
+            "inLanguage": "lt",
+            "isPartOf": {
+                "@type": "WebSite",
+                "url": "https://hidraulinesgerves.lt"
+            },
+            "about": {
+                "@type": "Thing",
+                "name": "Hidraulinės gervės",
+                "description": "Hidraulinės tempimo gervės pramonės, miškų ūkio ir transporto sektoriams"
+            }
+        }
+    ]
     </script>
 </head>
 
