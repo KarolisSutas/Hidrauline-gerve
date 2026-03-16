@@ -7,20 +7,37 @@ function cssBeforeScript() {
         name: 'css-before-script',
         enforce: 'post',
         transformIndexHtml(html) {
-            // Surasti CSS link tagą
             const cssMatch = html.match(/<link rel="stylesheet"[^>]*href="\/assets\/[^"]*\.css"[^>]*>/);
             if (!cssMatch) return html;
-
-            // Pašalinti iš dabartinės vietos
             html = html.replace(cssMatch[0], '');
-
-            // Įterpti prieš pirmą <script> head bloke
             html = html.replace(
                 /(<script type="module"[^>]*src="\/assets\/[^"]*\.js"[^>]*>)/,
                 cssMatch[0] + '\n  $1'
             );
-
             return html;
+        }
+    };
+}
+
+// Plugin: critical CSS inlining su critters
+function criticalCss() {
+    let Critters;
+    return {
+        name: 'critical-css',
+        enforce: 'post',
+        apply: 'build',
+        async configResolved() {
+            Critters = (await import('critters')).default;
+        },
+        async transformIndexHtml(html, ctx) {
+            const critters = new Critters({
+                path: resolve(__dirname, 'dist'),
+                preload: 'swap',
+                inlineFonts: false,
+                compress: true,
+                pruneSource: false,
+            });
+            return await critters.process(html);
         }
     };
 }
@@ -65,5 +82,6 @@ export default defineConfig({
             },
         },
         cssBeforeScript(),
+        criticalCss(),
     ],
 });
