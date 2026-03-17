@@ -5,9 +5,9 @@ import { initGallery } from './components/gallery';
 import { initSlideShow } from './components/slideShow';
 import { initDrawer } from './components/drawer';
 import { initNavDropdown } from './components/navDropdown';
-import { initForm } from './components/form';
 import { initCardScrollAnimation } from './components/cardScrollAnimation';
 import { initNavLink } from './components/navLink';
+import { initForm, lazyLoadRecaptcha } from './components/form';
 
 // Navbar mobile collapse
 function initNavCollapse() {
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initForm('contact-page-form', 'page-form-success', 'page-form-error')
     initCardScrollAnimation();
     initNavLink();
-    
+    lazyLoadRecaptcha('contact-page-form');
 });
 
 // FAQ akordeonas

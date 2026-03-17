@@ -6,6 +6,23 @@
 const RECAPTCHA_SITE_KEY = '6LfbwYEsAAAAAEO62dcUHCCWWDCWdAV3cR6BJI_h';
 
 /**
+ * Lazy load reCAPTCHA – kraunama tik kai vartotojas fokusuoja formą
+ */
+export function lazyLoadRecaptcha(formId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    let loaded = false;
+    form.addEventListener('focusin', () => {
+        if (loaded) return;
+        loaded = true;
+        const script = document.createElement('script');
+        script.src = `https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`;
+        document.head.appendChild(script);
+    }, { once: true });
+}
+
+/**
  * Gauti reCAPTCHA v3 token
  */
 async function getRecaptchaToken() {
