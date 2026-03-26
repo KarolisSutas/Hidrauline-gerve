@@ -170,22 +170,38 @@ app.post('/api/contact', rateLimiter, async (req, res) => {
         }
 
         // 4. Siųsti email
+        const tel = telefonas?.trim() ? `+370 ${escapeHtml(telefonas.trim())}` : 'Nenurodytas';
+
         await transporter.sendMail({
             from: `"Svetainės užklausa" <${process.env.SMTP_USER}>`,
             to: process.env.RECIPIENT_EMAIL,
-            replyTo: email.trim(),
             subject: `Užklausa: ${tema.trim()}`,
-            html: `
-                <h2 style="color:#991b1b;">Nauja užklausa iš svetainės</h2>
-                <table style="border-collapse:collapse; font-family:Arial,sans-serif; font-size:14px;">
+            text: [
+                'Nauja užklausa iš svetainės',
+                '',
+                `Vardas: ${vardas.trim()}`,
+                `Telefonas: ${tel}`,
+                `El. paštas: ${email.trim()}`,
+                `Tema: ${tema.trim()}`,
+                `Žinutė: ${zinute.trim()}`,
+                '',
+                '---',
+                'Šis laiškas sugeneruotas automatiškai iš www.hidraulinesgerves.lt kontaktų formos.',
+            ].join('\n'),
+            html: `<!DOCTYPE html>
+            <html lang="lt">
+            <head><meta charset="UTF-8"></head>
+            <body style="margin:0; padding:16px; font-family:Arial,sans-serif; font-size:14px; color:#333;">
+                <h2 style="color:#991b1b; margin-top:0;">Nauja užklausa iš svetainės</h2>
+                <table style="border-collapse:collapse;">
                     <tr>
                         <td style="padding:8px 16px 8px 0; font-weight:bold; color:#555;">Vardas:</td>
                         <td style="padding:8px 0;">${escapeHtml(vardas.trim())}</td>
                     </tr>
                     <tr>
                         <td style="padding:8px 16px 8px 0; font-weight:bold; color:#555;">Telefonas:</td>
-                        <td style="padding:8px 0;">+370 ${escapeHtml(telefonas.trim())}</td>
-                    </tr>
+                        <td style="padding:8px 0;">${tel}</td>
+                    /tr>
                     <tr>
                         <td style="padding:8px 16px 8px 0; font-weight:bold; color:#555;">El. paštas:</td>
                         <td style="padding:8px 0;"><a href="mailto:${escapeHtml(email.trim())}">${escapeHtml(email.trim())}</a></td>
@@ -201,9 +217,10 @@ app.post('/api/contact', rateLimiter, async (req, res) => {
                 </table>
                 <hr style="margin-top:24px; border:none; border-top:1px solid #ddd;">
                 <p style="font-size:12px; color:#999;">
-                    Šis laiškas sugeneruotas automatiškai iš www.hidraulinesgerves.lt kontaktų formos.
+                Šis laiškas sugeneruotas automatiškai iš www.hidraulinesgerves.lt kontaktų formos.
                 </p>
-            `,
+            </body>
+            </html>`,
         });
 
         console.log(`✅ Email išsiųstas: ${tema} (nuo ${email})`);
